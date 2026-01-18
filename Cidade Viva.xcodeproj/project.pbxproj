@@ -10,9 +10,22 @@
 		8513A0482F1C902F00BEA8AA /* Cidade Viva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cidade Viva.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		854BC24B2F1C98BC00CE4AF5 /* Exceptions for "Cidade Viva" folder in "Cidade Viva" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Info.plist,
+			);
+			target = 8513A0472F1C902F00BEA8AA /* Cidade Viva */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8513A04A2F1C902F00BEA8AA /* Cidade Viva */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				854BC24B2F1C98BC00CE4AF5 /* Exceptions for "Cidade Viva" folder in "Cidade Viva" target */,
+			);
 			path = "Cidade Viva";
 			sourceTree = "<group>";
 		};
