@@ -6,7 +6,10 @@ protocol NewsRepositoryProtocol {
 
 final class NewsRepository: NewsRepositoryProtocol {
     func fetchNews() async throws -> [News] {
-        // TODO: Implement API call
-        return MockData.news
+        if AppConfiguration.useFirebase {
+            return try await FirestoreService.shared.fetchNews()
+        } else {
+            return MockData.news
+        }
     }
 }

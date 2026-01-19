@@ -6,7 +6,10 @@ protocol CamerasRepositoryProtocol {
 
 final class CamerasRepository: CamerasRepositoryProtocol {
     func fetchCameras() async throws -> [Camera] {
-        // TODO: Implement API call
-        return MockData.cameras
+        if AppConfiguration.useFirebase {
+            return try await FirestoreService.shared.fetchCameras()
+        } else {
+            return MockData.cameras
+        }
     }
 }

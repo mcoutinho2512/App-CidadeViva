@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		854BC2702F1ECE4D00CE4AF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 854BC26F2F1ECE4C00CE4AF5 /* GoogleService-Info.plist */; };
+		854BC2732F1ED0E700CE4AF5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 854BC2722F1ED0E700CE4AF5 /* FirebaseCore */; };
+		854BC2752F1ED0E700CE4AF5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 854BC2742F1ED0E700CE4AF5 /* FirebaseFirestore */; };
+		854BC2772F1ED3D600CE4AF5 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2762F1ED3D600CE4AF5 /* FirestoreService.swift */; };
+		854BC2792F1ED8EA00CE4AF5 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2782F1ED8EA00CE4AF5 /* Banner.swift */; };
 		A1000001 /* CidadeVivaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000 /* CidadeVivaApp.swift */; };
 		A1000003 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* AppRouter.swift */; };
 		A1000005 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004 /* AppConfiguration.swift */; };
@@ -33,19 +38,6 @@
 		A100002F /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100002E /* CardStyle.swift */; };
 		A1000031 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000030 /* LoadingView.swift */; };
 		A1000033 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000032 /* ErrorView.swift */; };
-		A100007D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100007C /* EmptyStateView.swift */; };
-		A100007F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100007E /* HeaderView.swift */; };
-		A1000081 /* CategoryTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000080 /* CategoryTabBar.swift */; };
-		A1000083 /* EventCardLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000082 /* EventCardLarge.swift */; };
-		A1000085 /* EventRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000084 /* EventRowItem.swift */; };
-		A1000087 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000086 /* BannerView.swift */; };
-		A1000089 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000088 /* SectionHeader.swift */; };
-		A100008B /* NavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008A /* NavigationButtons.swift */; };
-		A100008D /* EventosSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008C /* EventosSection.swift */; };
-		A100008F /* AlertasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008E /* AlertasSection.swift */; };
-		A1000091 /* CamerasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000090 /* CamerasSection.swift */; };
-		A1000093 /* MapaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000092 /* MapaSection.swift */; };
-		A1000095 /* TransporteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000094 /* TransporteSection.swift */; };
 		A1000035 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000034 /* Weather.swift */; };
 		A1000037 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000036 /* Camera.swift */; };
 		A1000039 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000038 /* Alert.swift */; };
@@ -82,10 +74,25 @@
 		A1000077 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000076 /* CacheService.swift */; };
 		A1000079 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000078 /* LocationService.swift */; };
 		A100007B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100007A /* Assets.xcassets */; };
+		A100007D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100007C /* EmptyStateView.swift */; };
+		A100007F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100007E /* HeaderView.swift */; };
+		A1000081 /* CategoryTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000080 /* CategoryTabBar.swift */; };
+		A1000083 /* EventCardLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000082 /* EventCardLarge.swift */; };
+		A1000085 /* EventRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000084 /* EventRowItem.swift */; };
+		A1000087 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000086 /* BannerView.swift */; };
+		A1000089 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000088 /* SectionHeader.swift */; };
+		A100008B /* NavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008A /* NavigationButtons.swift */; };
+		A100008D /* EventosSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008C /* EventosSection.swift */; };
+		A100008F /* AlertasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008E /* AlertasSection.swift */; };
+		A1000091 /* CamerasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000090 /* CamerasSection.swift */; };
+		A1000093 /* MapaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000092 /* MapaSection.swift */; };
+		A1000095 /* TransporteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000094 /* TransporteSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1FFFFFF /* CidadeViva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CidadeViva.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		854BC26F2F1ECE4C00CE4AF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		854BC2762F1ED3D600CE4AF5 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		854BC2782F1ED8EA00CE4AF5 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		A1000000 /* CidadeVivaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CidadeVivaApp.swift; sourceTree = "<group>"; };
 		A1000002 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		A1000004 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -112,19 +119,6 @@
 		A100002E /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
 		A1000030 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A1000032 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		A100007C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		A100007E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		A1000080 /* CategoryTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabBar.swift; sourceTree = "<group>"; };
-		A1000082 /* EventCardLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardLarge.swift; sourceTree = "<group>"; };
-		A1000084 /* EventRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowItem.swift; sourceTree = "<group>"; };
-		A1000086 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
-		A1000088 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		A100008A /* NavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtons.swift; sourceTree = "<group>"; };
-		A100008C /* EventosSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventosSection.swift; sourceTree = "<group>"; };
-		A100008E /* AlertasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertasSection.swift; sourceTree = "<group>"; };
-		A1000090 /* CamerasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasSection.swift; sourceTree = "<group>"; };
-		A1000092 /* MapaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaSection.swift; sourceTree = "<group>"; };
-		A1000094 /* TransporteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporteSection.swift; sourceTree = "<group>"; };
 		A1000034 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		A1000036 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A1000038 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -161,6 +155,20 @@
 		A1000076 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		A1000078 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		A100007A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A100007C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		A100007E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		A1000080 /* CategoryTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabBar.swift; sourceTree = "<group>"; };
+		A1000082 /* EventCardLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardLarge.swift; sourceTree = "<group>"; };
+		A1000084 /* EventRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowItem.swift; sourceTree = "<group>"; };
+		A1000086 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		A1000088 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		A100008A /* NavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtons.swift; sourceTree = "<group>"; };
+		A100008C /* EventosSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventosSection.swift; sourceTree = "<group>"; };
+		A100008E /* AlertasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertasSection.swift; sourceTree = "<group>"; };
+		A1000090 /* CamerasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasSection.swift; sourceTree = "<group>"; };
+		A1000092 /* MapaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaSection.swift; sourceTree = "<group>"; };
+		A1000094 /* TransporteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporteSection.swift; sourceTree = "<group>"; };
+		A1FFFFFF /* CidadeViva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CidadeViva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,39 +176,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				854BC2732F1ED0E700CE4AF5 /* FirebaseCore in Frameworks */,
+				854BC2752F1ED0E700CE4AF5 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A1FFFFFD /* CidadeViva */ = {
+		854BC2712F1ED0E700CE4AF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A1100001 /* App */,
-				A1100002 /* Presentation */,
-				A1100003 /* Domain */,
-				A1100004 /* Data */,
-				A1100005 /* Infra */,
-				A1100006 /* Resources */,
 			);
-			path = CidadeViva;
-			sourceTree = "<group>";
-		};
-		A1FFFFFC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A1FFFFFF /* CidadeViva.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A1FFFFFB = {
-			isa = PBXGroup;
-			children = (
-				A1FFFFFD /* CidadeViva */,
-				A1FFFFFC /* Products */,
-			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A1100001 /* App */ = {
@@ -222,6 +210,42 @@
 				A1110004 /* Components */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A1100003 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A1120001 /* Models */,
+				A1120002 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A1100004 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A1130001 /* Repositories */,
+				A1130002 /* DTOs */,
+				A1130003 /* Mocks */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A1100005 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				A1140001 /* Networking */,
+				A1140002 /* Services */,
+			);
+			path = Infra;
+			sourceTree = "<group>";
+		};
+		A1100006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A100007A /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		A1110001 /* Screens */ = {
@@ -284,30 +308,10 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		A1150001 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A100008C /* EventosSection.swift */,
-				A100008E /* AlertasSection.swift */,
-				A1000090 /* CamerasSection.swift */,
-				A1000092 /* MapaSection.swift */,
-				A1000094 /* TransporteSection.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		A1100003 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				A1120001 /* Models */,
-				A1120002 /* UseCases */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
 		A1120001 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				854BC2782F1ED8EA00CE4AF5 /* Banner.swift */,
 				A1000034 /* Weather.swift */,
 				A1000036 /* Camera.swift */,
 				A1000038 /* Alert.swift */,
@@ -332,16 +336,6 @@
 				A1000050 /* CalculateRouteUseCase.swift */,
 			);
 			path = UseCases;
-			sourceTree = "<group>";
-		};
-		A1100004 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				A1130001 /* Repositories */,
-				A1130002 /* DTOs */,
-				A1130003 /* Mocks */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		A1130001 /* Repositories */ = {
@@ -380,15 +374,6 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		A1100005 /* Infra */ = {
-			isa = PBXGroup;
-			children = (
-				A1140001 /* Networking */,
-				A1140002 /* Services */,
-			);
-			path = Infra;
-			sourceTree = "<group>";
-		};
 		A1140001 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,18 +387,54 @@
 		A1140002 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				854BC2762F1ED3D600CE4AF5 /* FirestoreService.swift */,
 				A1000076 /* CacheService.swift */,
 				A1000078 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		A1100006 /* Resources */ = {
+		A1150001 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				A100007A /* Assets.xcassets */,
+				A100008C /* EventosSection.swift */,
+				A100008E /* AlertasSection.swift */,
+				A1000090 /* CamerasSection.swift */,
+				A1000092 /* MapaSection.swift */,
+				A1000094 /* TransporteSection.swift */,
 			);
-			path = Resources;
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A1FFFFFB = {
+			isa = PBXGroup;
+			children = (
+				A1FFFFFD /* CidadeViva */,
+				854BC2712F1ED0E700CE4AF5 /* Frameworks */,
+				A1FFFFFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1FFFFFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1FFFFFF /* CidadeViva.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1FFFFFD /* CidadeViva */ = {
+			isa = PBXGroup;
+			children = (
+				A1100001 /* App */,
+				A1100002 /* Presentation */,
+				A1100003 /* Domain */,
+				A1100004 /* Data */,
+				A1100005 /* Infra */,
+				A1100006 /* Resources */,
+				854BC26F2F1ECE4C00CE4AF5 /* GoogleService-Info.plist */,
+			);
+			path = CidadeViva;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,6 +482,9 @@
 				Base,
 			);
 			mainGroup = A1FFFFFB;
+			packageReferences = (
+				854BC26E2F1ECC6300CE4AF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A1FFFFFC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -476,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A100007B /* Assets.xcassets in Resources */,
+				854BC2702F1ECE4D00CE4AF5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000001 /* CidadeVivaApp.swift in Sources */,
+				854BC2772F1ED3D600CE4AF5 /* FirestoreService.swift in Sources */,
 				A1000003 /* AppRouter.swift in Sources */,
 				A1000005 /* AppConfiguration.swift in Sources */,
 				A1000007 /* HomeView.swift in Sources */,
@@ -554,6 +580,7 @@
 				A1000069 /* NewsDTO.swift in Sources */,
 				A100006B /* PointOfInterestDTO.swift in Sources */,
 				A100006D /* RouteDTO.swift in Sources */,
+				854BC2792F1ED8EA00CE4AF5 /* Banner.swift in Sources */,
 				A100006F /* MockData.swift in Sources */,
 				A1000071 /* APIClient.swift in Sources */,
 				A1000073 /* Endpoints.swift in Sources */,
@@ -571,7 +598,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-								CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
@@ -658,7 +685,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-								CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
@@ -870,6 +897,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		854BC26E2F1ECC6300CE4AF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		854BC2722F1ED0E700CE4AF5 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 854BC26E2F1ECC6300CE4AF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		854BC2742F1ED0E700CE4AF5 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 854BC26E2F1ECC6300CE4AF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A1FFFFFA /* Project object */;
 }

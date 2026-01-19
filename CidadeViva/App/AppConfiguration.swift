@@ -60,6 +60,10 @@ enum AppConfiguration {
     static var fullAPIURL: String {
         "\(apiBaseURL)/\(apiVersion)"
     }
+
+    // MARK: - Firebase
+    /// Define se deve usar Firebase (true) ou MockData (false)
+    static let useFirebase = true
 }
 
 // MARK: - Color Extension

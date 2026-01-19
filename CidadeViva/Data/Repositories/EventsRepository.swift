@@ -6,7 +6,10 @@ protocol EventsRepositoryProtocol {
 
 final class EventsRepository: EventsRepositoryProtocol {
     func fetchEvents() async throws -> [Event] {
-        // TODO: Implement API call
-        return MockData.events
+        if AppConfiguration.useFirebase {
+            return try await FirestoreService.shared.fetchEvents()
+        } else {
+            return MockData.events
+        }
     }
 }

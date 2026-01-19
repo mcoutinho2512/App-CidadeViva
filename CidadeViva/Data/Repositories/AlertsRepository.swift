@@ -6,7 +6,10 @@ protocol AlertsRepositoryProtocol {
 
 final class AlertsRepository: AlertsRepositoryProtocol {
     func fetchAlerts() async throws -> [Alert] {
-        // TODO: Implement API call
-        return MockData.alerts
+        if AppConfiguration.useFirebase {
+            return try await FirestoreService.shared.fetchAlerts()
+        } else {
+            return MockData.alerts
+        }
     }
 }
