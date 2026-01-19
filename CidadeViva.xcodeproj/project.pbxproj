@@ -1,0 +1,875 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1000001 /* CidadeVivaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000 /* CidadeVivaApp.swift */; };
+		A1000003 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* AppRouter.swift */; };
+		A1000005 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004 /* AppConfiguration.swift */; };
+		A1000007 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000006 /* HomeView.swift */; };
+		A1000009 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008 /* WeatherView.swift */; };
+		A100000B /* CamerasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000A /* CamerasView.swift */; };
+		A100000D /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000C /* AlertsView.swift */; };
+		A100000F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000E /* MapView.swift */; };
+		A1000011 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010 /* EventsView.swift */; };
+		A1000013 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000012 /* NewsView.swift */; };
+		A1000015 /* POIsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000014 /* POIsView.swift */; };
+		A1000017 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000016 /* NavigationView.swift */; };
+		A1000019 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000018 /* HomeViewModel.swift */; };
+		A100001B /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001A /* WeatherViewModel.swift */; };
+		A100001D /* CamerasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001C /* CamerasViewModel.swift */; };
+		A100001F /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001E /* AlertsViewModel.swift */; };
+		A1000021 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000020 /* MapViewModel.swift */; };
+		A1000023 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000022 /* EventsViewModel.swift */; };
+		A1000025 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000024 /* NewsViewModel.swift */; };
+		A1000027 /* POIsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000026 /* POIsViewModel.swift */; };
+		A1000029 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000028 /* NavigationViewModel.swift */; };
+		A100002B /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100002A /* InfoCard.swift */; };
+		A100002D /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100002C /* SearchBar.swift */; };
+		A100002F /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100002E /* CardStyle.swift */; };
+		A1000031 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000030 /* LoadingView.swift */; };
+		A1000033 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000032 /* ErrorView.swift */; };
+		A100007D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100007C /* EmptyStateView.swift */; };
+		A100007F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100007E /* HeaderView.swift */; };
+		A1000081 /* CategoryTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000080 /* CategoryTabBar.swift */; };
+		A1000083 /* EventCardLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000082 /* EventCardLarge.swift */; };
+		A1000085 /* EventRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000084 /* EventRowItem.swift */; };
+		A1000087 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000086 /* BannerView.swift */; };
+		A1000089 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000088 /* SectionHeader.swift */; };
+		A100008B /* NavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008A /* NavigationButtons.swift */; };
+		A100008D /* EventosSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008C /* EventosSection.swift */; };
+		A100008F /* AlertasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100008E /* AlertasSection.swift */; };
+		A1000091 /* CamerasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000090 /* CamerasSection.swift */; };
+		A1000093 /* MapaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000092 /* MapaSection.swift */; };
+		A1000095 /* TransporteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000094 /* TransporteSection.swift */; };
+		A1000035 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000034 /* Weather.swift */; };
+		A1000037 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000036 /* Camera.swift */; };
+		A1000039 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000038 /* Alert.swift */; };
+		A100003B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003A /* Location.swift */; };
+		A100003D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003C /* Event.swift */; };
+		A100003F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100003E /* News.swift */; };
+		A1000041 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000040 /* PointOfInterest.swift */; };
+		A1000043 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000042 /* Route.swift */; };
+		A1000045 /* FetchWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000044 /* FetchWeatherUseCase.swift */; };
+		A1000047 /* FetchCamerasUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000046 /* FetchCamerasUseCase.swift */; };
+		A1000049 /* FetchAlertsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000048 /* FetchAlertsUseCase.swift */; };
+		A100004B /* FetchEventsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100004A /* FetchEventsUseCase.swift */; };
+		A100004D /* FetchNewsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100004C /* FetchNewsUseCase.swift */; };
+		A100004F /* FetchPOIsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100004E /* FetchPOIsUseCase.swift */; };
+		A1000051 /* CalculateRouteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000050 /* CalculateRouteUseCase.swift */; };
+		A1000053 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000052 /* WeatherRepository.swift */; };
+		A1000055 /* CamerasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000054 /* CamerasRepository.swift */; };
+		A1000057 /* AlertsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000056 /* AlertsRepository.swift */; };
+		A1000059 /* EventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000058 /* EventsRepository.swift */; };
+		A100005B /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100005A /* NewsRepository.swift */; };
+		A100005D /* POIsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100005C /* POIsRepository.swift */; };
+		A100005F /* NavigationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100005E /* NavigationRepository.swift */; };
+		A1000061 /* WeatherDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000060 /* WeatherDTO.swift */; };
+		A1000063 /* CameraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000062 /* CameraDTO.swift */; };
+		A1000065 /* AlertDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000064 /* AlertDTO.swift */; };
+		A1000067 /* EventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000066 /* EventDTO.swift */; };
+		A1000069 /* NewsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000068 /* NewsDTO.swift */; };
+		A100006B /* PointOfInterestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100006A /* PointOfInterestDTO.swift */; };
+		A100006D /* RouteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100006C /* RouteDTO.swift */; };
+		A100006F /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100006E /* MockData.swift */; };
+		A1000071 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000070 /* APIClient.swift */; };
+		A1000073 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000072 /* Endpoints.swift */; };
+		A1000075 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000074 /* NetworkError.swift */; };
+		A1000077 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000076 /* CacheService.swift */; };
+		A1000079 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000078 /* LocationService.swift */; };
+		A100007B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100007A /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1FFFFFF /* CidadeViva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CidadeViva.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1000000 /* CidadeVivaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CidadeVivaApp.swift; sourceTree = "<group>"; };
+		A1000002 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		A1000004 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		A1000006 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A1000008 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		A100000A /* CamerasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasView.swift; sourceTree = "<group>"; };
+		A100000C /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		A100000E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A1000010 /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		A1000012 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		A1000014 /* POIsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIsView.swift; sourceTree = "<group>"; };
+		A1000016 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		A1000018 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A100001A /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		A100001C /* CamerasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasViewModel.swift; sourceTree = "<group>"; };
+		A100001E /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
+		A1000020 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		A1000022 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		A1000024 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		A1000026 /* POIsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIsViewModel.swift; sourceTree = "<group>"; };
+		A1000028 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
+		A100002A /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
+		A100002C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		A100002E /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
+		A1000030 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A1000032 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		A100007C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		A100007E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		A1000080 /* CategoryTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabBar.swift; sourceTree = "<group>"; };
+		A1000082 /* EventCardLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardLarge.swift; sourceTree = "<group>"; };
+		A1000084 /* EventRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowItem.swift; sourceTree = "<group>"; };
+		A1000086 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		A1000088 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		A100008A /* NavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtons.swift; sourceTree = "<group>"; };
+		A100008C /* EventosSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventosSection.swift; sourceTree = "<group>"; };
+		A100008E /* AlertasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertasSection.swift; sourceTree = "<group>"; };
+		A1000090 /* CamerasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasSection.swift; sourceTree = "<group>"; };
+		A1000092 /* MapaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaSection.swift; sourceTree = "<group>"; };
+		A1000094 /* TransporteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporteSection.swift; sourceTree = "<group>"; };
+		A1000034 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		A1000036 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		A1000038 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A100003A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A100003C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		A100003E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		A1000040 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
+		A1000042 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		A1000044 /* FetchWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWeatherUseCase.swift; sourceTree = "<group>"; };
+		A1000046 /* FetchCamerasUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCamerasUseCase.swift; sourceTree = "<group>"; };
+		A1000048 /* FetchAlertsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAlertsUseCase.swift; sourceTree = "<group>"; };
+		A100004A /* FetchEventsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEventsUseCase.swift; sourceTree = "<group>"; };
+		A100004C /* FetchNewsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNewsUseCase.swift; sourceTree = "<group>"; };
+		A100004E /* FetchPOIsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPOIsUseCase.swift; sourceTree = "<group>"; };
+		A1000050 /* CalculateRouteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateRouteUseCase.swift; sourceTree = "<group>"; };
+		A1000052 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
+		A1000054 /* CamerasRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasRepository.swift; sourceTree = "<group>"; };
+		A1000056 /* AlertsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsRepository.swift; sourceTree = "<group>"; };
+		A1000058 /* EventsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepository.swift; sourceTree = "<group>"; };
+		A100005A /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
+		A100005C /* POIsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIsRepository.swift; sourceTree = "<group>"; };
+		A100005E /* NavigationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRepository.swift; sourceTree = "<group>"; };
+		A1000060 /* WeatherDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDTO.swift; sourceTree = "<group>"; };
+		A1000062 /* CameraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDTO.swift; sourceTree = "<group>"; };
+		A1000064 /* AlertDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDTO.swift; sourceTree = "<group>"; };
+		A1000066 /* EventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDTO.swift; sourceTree = "<group>"; };
+		A1000068 /* NewsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDTO.swift; sourceTree = "<group>"; };
+		A100006A /* PointOfInterestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestDTO.swift; sourceTree = "<group>"; };
+		A100006C /* RouteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDTO.swift; sourceTree = "<group>"; };
+		A100006E /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		A1000070 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A1000072 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		A1000074 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		A1000076 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		A1000078 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		A100007A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1FFFFF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1FFFFFD /* CidadeViva */ = {
+			isa = PBXGroup;
+			children = (
+				A1100001 /* App */,
+				A1100002 /* Presentation */,
+				A1100003 /* Domain */,
+				A1100004 /* Data */,
+				A1100005 /* Infra */,
+				A1100006 /* Resources */,
+			);
+			path = CidadeViva;
+			sourceTree = "<group>";
+		};
+		A1FFFFFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1FFFFFF /* CidadeViva.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1FFFFFB = {
+			isa = PBXGroup;
+			children = (
+				A1FFFFFD /* CidadeViva */,
+				A1FFFFFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1100001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1000000 /* CidadeVivaApp.swift */,
+				A1000002 /* AppRouter.swift */,
+				A1000004 /* AppConfiguration.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1100002 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A1110001 /* Screens */,
+				A1110002 /* Views */,
+				A1110003 /* ViewModels */,
+				A1110004 /* Components */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A1110001 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A1000006 /* HomeView.swift */,
+				A1000008 /* WeatherView.swift */,
+				A100000A /* CamerasView.swift */,
+				A100000C /* AlertsView.swift */,
+				A100000E /* MapView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A1110002 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1000010 /* EventsView.swift */,
+				A1000012 /* NewsView.swift */,
+				A1000014 /* POIsView.swift */,
+				A1000016 /* NavigationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1110003 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A1000018 /* HomeViewModel.swift */,
+				A100001A /* WeatherViewModel.swift */,
+				A100001C /* CamerasViewModel.swift */,
+				A100001E /* AlertsViewModel.swift */,
+				A1000020 /* MapViewModel.swift */,
+				A1000022 /* EventsViewModel.swift */,
+				A1000024 /* NewsViewModel.swift */,
+				A1000026 /* POIsViewModel.swift */,
+				A1000028 /* NavigationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A1110004 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A1150001 /* Sections */,
+				A100002A /* InfoCard.swift */,
+				A100002C /* SearchBar.swift */,
+				A100002E /* CardStyle.swift */,
+				A1000030 /* LoadingView.swift */,
+				A1000032 /* ErrorView.swift */,
+				A100007C /* EmptyStateView.swift */,
+				A100007E /* HeaderView.swift */,
+				A1000080 /* CategoryTabBar.swift */,
+				A1000082 /* EventCardLarge.swift */,
+				A1000084 /* EventRowItem.swift */,
+				A1000086 /* BannerView.swift */,
+				A1000088 /* SectionHeader.swift */,
+				A100008A /* NavigationButtons.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A1150001 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				A100008C /* EventosSection.swift */,
+				A100008E /* AlertasSection.swift */,
+				A1000090 /* CamerasSection.swift */,
+				A1000092 /* MapaSection.swift */,
+				A1000094 /* TransporteSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		A1100003 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A1120001 /* Models */,
+				A1120002 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A1120001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1000034 /* Weather.swift */,
+				A1000036 /* Camera.swift */,
+				A1000038 /* Alert.swift */,
+				A100003A /* Location.swift */,
+				A100003C /* Event.swift */,
+				A100003E /* News.swift */,
+				A1000040 /* PointOfInterest.swift */,
+				A1000042 /* Route.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1120002 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				A1000044 /* FetchWeatherUseCase.swift */,
+				A1000046 /* FetchCamerasUseCase.swift */,
+				A1000048 /* FetchAlertsUseCase.swift */,
+				A100004A /* FetchEventsUseCase.swift */,
+				A100004C /* FetchNewsUseCase.swift */,
+				A100004E /* FetchPOIsUseCase.swift */,
+				A1000050 /* CalculateRouteUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		A1100004 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A1130001 /* Repositories */,
+				A1130002 /* DTOs */,
+				A1130003 /* Mocks */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A1130001 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A1000052 /* WeatherRepository.swift */,
+				A1000054 /* CamerasRepository.swift */,
+				A1000056 /* AlertsRepository.swift */,
+				A1000058 /* EventsRepository.swift */,
+				A100005A /* NewsRepository.swift */,
+				A100005C /* POIsRepository.swift */,
+				A100005E /* NavigationRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		A1130002 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				A1000060 /* WeatherDTO.swift */,
+				A1000062 /* CameraDTO.swift */,
+				A1000064 /* AlertDTO.swift */,
+				A1000066 /* EventDTO.swift */,
+				A1000068 /* NewsDTO.swift */,
+				A100006A /* PointOfInterestDTO.swift */,
+				A100006C /* RouteDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		A1130003 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A100006E /* MockData.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A1100005 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				A1140001 /* Networking */,
+				A1140002 /* Services */,
+			);
+			path = Infra;
+			sourceTree = "<group>";
+		};
+		A1140001 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A1000070 /* APIClient.swift */,
+				A1000072 /* Endpoints.swift */,
+				A1000074 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A1140002 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A1000076 /* CacheService.swift */,
+				A1000078 /* LocationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A1100006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A100007A /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1FFFFFE /* CidadeViva */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A200000F /* Build configuration list for PBXNativeTarget "CidadeViva" */;
+			buildPhases = (
+				A1FFFFF2 /* Sources */,
+				A1FFFFF0 /* Frameworks */,
+				A1FFFFF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CidadeViva;
+			productName = CidadeViva;
+			productReference = A1FFFFFF /* CidadeViva.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1FFFFFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A1FFFFFE = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A200000E /* Build configuration list for PBXProject "CidadeViva" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "pt-BR";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				"pt-BR",
+				en,
+				Base,
+			);
+			mainGroup = A1FFFFFB;
+			productRefGroup = A1FFFFFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1FFFFFE /* CidadeViva */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1FFFFF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100007B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1FFFFF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000001 /* CidadeVivaApp.swift in Sources */,
+				A1000003 /* AppRouter.swift in Sources */,
+				A1000005 /* AppConfiguration.swift in Sources */,
+				A1000007 /* HomeView.swift in Sources */,
+				A1000009 /* WeatherView.swift in Sources */,
+				A100000B /* CamerasView.swift in Sources */,
+				A100000D /* AlertsView.swift in Sources */,
+				A100000F /* MapView.swift in Sources */,
+				A1000011 /* EventsView.swift in Sources */,
+				A1000013 /* NewsView.swift in Sources */,
+				A1000015 /* POIsView.swift in Sources */,
+				A1000017 /* NavigationView.swift in Sources */,
+				A1000019 /* HomeViewModel.swift in Sources */,
+				A100001B /* WeatherViewModel.swift in Sources */,
+				A100001D /* CamerasViewModel.swift in Sources */,
+				A100001F /* AlertsViewModel.swift in Sources */,
+				A1000021 /* MapViewModel.swift in Sources */,
+				A1000023 /* EventsViewModel.swift in Sources */,
+				A1000025 /* NewsViewModel.swift in Sources */,
+				A1000027 /* POIsViewModel.swift in Sources */,
+				A1000029 /* NavigationViewModel.swift in Sources */,
+				A100002B /* InfoCard.swift in Sources */,
+				A100002D /* SearchBar.swift in Sources */,
+				A100002F /* CardStyle.swift in Sources */,
+				A1000031 /* LoadingView.swift in Sources */,
+				A1000033 /* ErrorView.swift in Sources */,
+				A100007D /* EmptyStateView.swift in Sources */,
+				A100007F /* HeaderView.swift in Sources */,
+				A1000081 /* CategoryTabBar.swift in Sources */,
+				A1000083 /* EventCardLarge.swift in Sources */,
+				A1000085 /* EventRowItem.swift in Sources */,
+				A1000087 /* BannerView.swift in Sources */,
+				A1000089 /* SectionHeader.swift in Sources */,
+				A100008B /* NavigationButtons.swift in Sources */,
+				A100008D /* EventosSection.swift in Sources */,
+				A100008F /* AlertasSection.swift in Sources */,
+				A1000091 /* CamerasSection.swift in Sources */,
+				A1000093 /* MapaSection.swift in Sources */,
+				A1000095 /* TransporteSection.swift in Sources */,
+				A1000035 /* Weather.swift in Sources */,
+				A1000037 /* Camera.swift in Sources */,
+				A1000039 /* Alert.swift in Sources */,
+				A100003B /* Location.swift in Sources */,
+				A100003D /* Event.swift in Sources */,
+				A100003F /* News.swift in Sources */,
+				A1000041 /* PointOfInterest.swift in Sources */,
+				A1000043 /* Route.swift in Sources */,
+				A1000045 /* FetchWeatherUseCase.swift in Sources */,
+				A1000047 /* FetchCamerasUseCase.swift in Sources */,
+				A1000049 /* FetchAlertsUseCase.swift in Sources */,
+				A100004B /* FetchEventsUseCase.swift in Sources */,
+				A100004D /* FetchNewsUseCase.swift in Sources */,
+				A100004F /* FetchPOIsUseCase.swift in Sources */,
+				A1000051 /* CalculateRouteUseCase.swift in Sources */,
+				A1000053 /* WeatherRepository.swift in Sources */,
+				A1000055 /* CamerasRepository.swift in Sources */,
+				A1000057 /* AlertsRepository.swift in Sources */,
+				A1000059 /* EventsRepository.swift in Sources */,
+				A100005B /* NewsRepository.swift in Sources */,
+				A100005D /* POIsRepository.swift in Sources */,
+				A100005F /* NavigationRepository.swift in Sources */,
+				A1000061 /* WeatherDTO.swift in Sources */,
+				A1000063 /* CameraDTO.swift in Sources */,
+				A1000065 /* AlertDTO.swift in Sources */,
+				A1000067 /* EventDTO.swift in Sources */,
+				A1000069 /* NewsDTO.swift in Sources */,
+				A100006B /* PointOfInterestDTO.swift in Sources */,
+				A100006D /* RouteDTO.swift in Sources */,
+				A100006F /* MockData.swift in Sources */,
+				A1000071 /* APIClient.swift in Sources */,
+				A1000073 /* Endpoints.swift in Sources */,
+				A1000075 /* NetworkError.swift in Sources */,
+				A1000077 /* CacheService.swift in Sources */,
+				A1000079 /* LocationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A2000010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+								CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cidade Viva";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "O app precisa da sua localização para mostrar pontos de interesse próximos e calcular rotas.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prefeitura.CidadeViva;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A2000011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+								CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cidade Viva";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "O app precisa da sua localização para mostrar pontos de interesse próximos e calcular rotas.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prefeitura.CidadeViva;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2000012 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A2000013 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A200000E /* Build configuration list for PBXProject "CidadeViva" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2000012 /* Debug */,
+				A2000013 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A200000F /* Build configuration list for PBXNativeTarget "CidadeViva" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2000010 /* Debug */,
+				A2000011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1FFFFFA /* Project object */;
+}
