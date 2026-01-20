@@ -13,7 +13,7 @@ struct Location: Identifiable, Equatable {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 
-    init(id: UUID = UUID(), latitude: Double, longitude: Double, address: String? = nil, neighborhood: String? = nil, city: String = "João Pessoa") {
+    init(id: UUID = UUID(), latitude: Double, longitude: Double, address: String? = nil, neighborhood: String? = nil, city: String = "Niterói") {
         self.id = id
         self.latitude = latitude
         self.longitude = longitude

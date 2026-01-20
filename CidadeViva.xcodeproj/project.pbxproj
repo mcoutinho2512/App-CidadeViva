@@ -12,6 +12,18 @@
 		854BC2752F1ED0E700CE4AF5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 854BC2742F1ED0E700CE4AF5 /* FirebaseFirestore */; };
 		854BC2772F1ED3D600CE4AF5 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2762F1ED3D600CE4AF5 /* FirestoreService.swift */; };
 		854BC2792F1ED8EA00CE4AF5 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2782F1ED8EA00CE4AF5 /* Banner.swift */; };
+		854BC27B2F1F139200CE4AF5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC27A2F1F139200CE4AF5 /* NotificationService.swift */; };
+		854BC2802F1F13CB00CE4AF5 /* CameraMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC27D2F1F13CB00CE4AF5 /* CameraMapAnnotation.swift */; };
+		854BC2812F1F13CB00CE4AF5 /* CameraCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC27C2F1F13CB00CE4AF5 /* CameraCalloutView.swift */; };
+		854BC2822F1F13CB00CE4AF5 /* CamerasMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC27E2F1F13CB00CE4AF5 /* CamerasMapView.swift */; };
+		854BC28A2F1F140D00CE4AF5 /* AlertasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2842F1F140D00CE4AF5 /* AlertasSection.swift */; };
+		854BC28B2F1F140D00CE4AF5 /* EventosSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2862F1F140D00CE4AF5 /* EventosSection.swift */; };
+		854BC28C2F1F140D00CE4AF5 /* MapaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2872F1F140D00CE4AF5 /* MapaSection.swift */; };
+		854BC28D2F1F140D00CE4AF5 /* TransporteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2882F1F140D00CE4AF5 /* TransporteSection.swift */; };
+		854BC28E2F1F140D00CE4AF5 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2832F1F140D00CE4AF5 /* FavoriteButton.swift */; };
+		854BC28F2F1F140D00CE4AF5 /* CamerasSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2852F1F140D00CE4AF5 /* CamerasSection.swift */; };
+		854BC2912F1F144100CE4AF5 /* FavoriteCamerasUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2902F1F144100CE4AF5 /* FavoriteCamerasUseCase.swift */; };
+		854BC2932F1F147100CE4AF5 /* FavoritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854BC2922F1F147100CE4AF5 /* FavoritesStorage.swift */; };
 		A1000001 /* CidadeVivaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000 /* CidadeVivaApp.swift */; };
 		A1000003 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* AppRouter.swift */; };
 		A1000005 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004 /* AppConfiguration.swift */; };
@@ -93,6 +105,18 @@
 		854BC26F2F1ECE4C00CE4AF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		854BC2762F1ED3D600CE4AF5 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		854BC2782F1ED8EA00CE4AF5 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		854BC27A2F1F139200CE4AF5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		854BC27C2F1F13CB00CE4AF5 /* CameraCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCalloutView.swift; sourceTree = "<group>"; };
+		854BC27D2F1F13CB00CE4AF5 /* CameraMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMapAnnotation.swift; sourceTree = "<group>"; };
+		854BC27E2F1F13CB00CE4AF5 /* CamerasMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasMapView.swift; sourceTree = "<group>"; };
+		854BC2832F1F140D00CE4AF5 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		854BC2842F1F140D00CE4AF5 /* AlertasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertasSection.swift; sourceTree = "<group>"; };
+		854BC2852F1F140D00CE4AF5 /* CamerasSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasSection.swift; sourceTree = "<group>"; };
+		854BC2862F1F140D00CE4AF5 /* EventosSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventosSection.swift; sourceTree = "<group>"; };
+		854BC2872F1F140D00CE4AF5 /* MapaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaSection.swift; sourceTree = "<group>"; };
+		854BC2882F1F140D00CE4AF5 /* TransporteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporteSection.swift; sourceTree = "<group>"; };
+		854BC2902F1F144100CE4AF5 /* FavoriteCamerasUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCamerasUseCase.swift; sourceTree = "<group>"; };
+		854BC2922F1F147100CE4AF5 /* FavoritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStorage.swift; sourceTree = "<group>"; };
 		A1000000 /* CidadeVivaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CidadeVivaApp.swift; sourceTree = "<group>"; };
 		A1000002 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		A1000004 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -191,6 +215,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		854BC27F2F1F13CB00CE4AF5 /* Cameras */ = {
+			isa = PBXGroup;
+			children = (
+				854BC27C2F1F13CB00CE4AF5 /* CameraCalloutView.swift */,
+				854BC27D2F1F13CB00CE4AF5 /* CameraMapAnnotation.swift */,
+				854BC27E2F1F13CB00CE4AF5 /* CamerasMapView.swift */,
+			);
+			path = Cameras;
+			sourceTree = "<group>";
+		};
+		854BC2892F1F140D00CE4AF5 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				854BC2842F1F140D00CE4AF5 /* AlertasSection.swift */,
+				854BC2852F1F140D00CE4AF5 /* CamerasSection.swift */,
+				854BC2862F1F140D00CE4AF5 /* EventosSection.swift */,
+				854BC2872F1F140D00CE4AF5 /* MapaSection.swift */,
+				854BC2882F1F140D00CE4AF5 /* TransporteSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
 		A1100001 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +270,7 @@
 		A1100004 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				854BC2922F1F147100CE4AF5 /* FavoritesStorage.swift */,
 				A1130001 /* Repositories */,
 				A1130002 /* DTOs */,
 				A1130003 /* Mocks */,
@@ -263,6 +310,7 @@
 		A1110002 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				854BC27F2F1F13CB00CE4AF5 /* Cameras */,
 				A1000010 /* EventsView.swift */,
 				A1000012 /* NewsView.swift */,
 				A1000014 /* POIsView.swift */,
@@ -290,6 +338,8 @@
 		A1110004 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				854BC2832F1F140D00CE4AF5 /* FavoriteButton.swift */,
+				854BC2892F1F140D00CE4AF5 /* Sections */,
 				A1150001 /* Sections */,
 				A100002A /* InfoCard.swift */,
 				A100002C /* SearchBar.swift */,
@@ -327,6 +377,7 @@
 		A1120002 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				854BC2902F1F144100CE4AF5 /* FavoriteCamerasUseCase.swift */,
 				A1000044 /* FetchWeatherUseCase.swift */,
 				A1000046 /* FetchCamerasUseCase.swift */,
 				A1000048 /* FetchAlertsUseCase.swift */,
@@ -387,6 +438,7 @@
 		A1140002 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				854BC27A2F1F139200CE4AF5 /* NotificationService.swift */,
 				854BC2762F1ED3D600CE4AF5 /* FirestoreService.swift */,
 				A1000076 /* CacheService.swift */,
 				A1000078 /* LocationService.swift */,
@@ -515,10 +567,14 @@
 				854BC2772F1ED3D600CE4AF5 /* FirestoreService.swift in Sources */,
 				A1000003 /* AppRouter.swift in Sources */,
 				A1000005 /* AppConfiguration.swift in Sources */,
+				854BC2912F1F144100CE4AF5 /* FavoriteCamerasUseCase.swift in Sources */,
 				A1000007 /* HomeView.swift in Sources */,
 				A1000009 /* WeatherView.swift in Sources */,
 				A100000B /* CamerasView.swift in Sources */,
 				A100000D /* AlertsView.swift in Sources */,
+				854BC2802F1F13CB00CE4AF5 /* CameraMapAnnotation.swift in Sources */,
+				854BC2812F1F13CB00CE4AF5 /* CameraCalloutView.swift in Sources */,
+				854BC2822F1F13CB00CE4AF5 /* CamerasMapView.swift in Sources */,
 				A100000F /* MapView.swift in Sources */,
 				A1000011 /* EventsView.swift in Sources */,
 				A1000013 /* NewsView.swift in Sources */,
@@ -534,6 +590,7 @@
 				A1000027 /* POIsViewModel.swift in Sources */,
 				A1000029 /* NavigationViewModel.swift in Sources */,
 				A100002B /* InfoCard.swift in Sources */,
+				854BC27B2F1F139200CE4AF5 /* NotificationService.swift in Sources */,
 				A100002D /* SearchBar.swift in Sources */,
 				A100002F /* CardStyle.swift in Sources */,
 				A1000031 /* LoadingView.swift in Sources */,
@@ -570,6 +627,13 @@
 				A1000055 /* CamerasRepository.swift in Sources */,
 				A1000057 /* AlertsRepository.swift in Sources */,
 				A1000059 /* EventsRepository.swift in Sources */,
+				854BC28A2F1F140D00CE4AF5 /* AlertasSection.swift in Sources */,
+				854BC2932F1F147100CE4AF5 /* FavoritesStorage.swift in Sources */,
+				854BC28B2F1F140D00CE4AF5 /* EventosSection.swift in Sources */,
+				854BC28C2F1F140D00CE4AF5 /* MapaSection.swift in Sources */,
+				854BC28D2F1F140D00CE4AF5 /* TransporteSection.swift in Sources */,
+				854BC28E2F1F140D00CE4AF5 /* FavoriteButton.swift in Sources */,
+				854BC28F2F1F140D00CE4AF5 /* CamerasSection.swift in Sources */,
 				A100005B /* NewsRepository.swift in Sources */,
 				A100005D /* POIsRepository.swift in Sources */,
 				A100005F /* NavigationRepository.swift in Sources */,

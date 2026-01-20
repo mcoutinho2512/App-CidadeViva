@@ -61,8 +61,18 @@ enum AppConfiguration {
         "\(apiBaseURL)/\(apiVersion)"
     }
 
-    // MARK: - Firebase
-    /// Define se deve usar Firebase (true) ou MockData (false)
+    // MARK: - Fonte de Dados
+
+    /// URL base da API REST (Cloud Functions)
+    /// Troque pelo seu domínio do Firebase Hosting após deploy
+    static let apiURL = "https://cidadeviva-admin.web.app/api"
+
+    /// Define se deve usar a API REST (Cloud Functions)
+    /// Se true, ignora useFirebase e busca dados via HTTP
+    static let useAPI = false
+
+    /// Define se deve usar Firebase SDK diretamente
+    /// Se useAPI for true, esta configuração é ignorada
     static let useFirebase = true
 }
 

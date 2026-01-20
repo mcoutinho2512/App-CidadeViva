@@ -7,65 +7,92 @@ enum MockData {
         condition: .partlyCloudy,
         humidity: 75,
         windSpeed: 12.5,
-        location: "João Pessoa, PB",
+        location: "Niterói, RJ",
         updatedAt: Date()
     )
 
     static let cameras: [Camera] = [
         Camera(
             id: UUID(),
-            name: "Av. Epitácio Pessoa - Tambaú",
-            location: Location(latitude: -7.1153, longitude: -34.8450, address: "Av. Epitácio Pessoa, Tambaú"),
-            streamURL: nil,
+            name: "Centro - Praça Arariboia",
+            location: Location(latitude: -22.8939, longitude: -43.1245, address: "Praça Arariboia", neighborhood: "Centro", city: "Niterói"),
+            streamURL: URL(string: "https://example.com/stream1"),
             thumbnailURL: nil,
             isOnline: true,
             lastUpdate: Date()
         ),
         Camera(
             id: UUID(),
-            name: "Orla de Cabo Branco",
-            location: Location(latitude: -7.1478, longitude: -34.8243, address: "Av. Cabo Branco"),
-            streamURL: nil,
+            name: "Icaraí - Praia",
+            location: Location(latitude: -22.9042, longitude: -43.1087, address: "Av. Moreira César", neighborhood: "Icaraí", city: "Niterói"),
+            streamURL: URL(string: "https://example.com/stream2"),
             thumbnailURL: nil,
             isOnline: true,
             lastUpdate: Date()
         ),
         Camera(
             id: UUID(),
-            name: "Centro - Lagoa",
-            location: Location(latitude: -7.1195, longitude: -34.8761, address: "Parque Solon de Lucena"),
+            name: "São Francisco - Orla",
+            location: Location(latitude: -22.9156, longitude: -43.0934, address: "Av. Quintino Bocaiúva", neighborhood: "São Francisco", city: "Niterói"),
+            streamURL: URL(string: "https://example.com/stream3"),
+            thumbnailURL: nil,
+            isOnline: true,
+            lastUpdate: Date()
+        ),
+        Camera(
+            id: UUID(),
+            name: "Charitas - Praia",
+            location: Location(latitude: -22.9367, longitude: -43.0645, address: "Praia de Charitas", neighborhood: "Charitas", city: "Niterói"),
             streamURL: nil,
             thumbnailURL: nil,
             isOnline: false,
             lastUpdate: Date().addingTimeInterval(-3600)
+        ),
+        Camera(
+            id: UUID(),
+            name: "Ingá - Campo de São Bento",
+            location: Location(latitude: -22.9003, longitude: -43.1156, address: "Campo de São Bento", neighborhood: "Ingá", city: "Niterói"),
+            streamURL: URL(string: "https://example.com/stream5"),
+            thumbnailURL: nil,
+            isOnline: true,
+            lastUpdate: Date()
+        ),
+        Camera(
+            id: UUID(),
+            name: "Centro - Terminal Rodoviário",
+            location: Location(latitude: -22.8912, longitude: -43.1278, address: "Terminal Rodoviário", neighborhood: "Centro", city: "Niterói"),
+            streamURL: nil,
+            thumbnailURL: nil,
+            isOnline: false,
+            lastUpdate: Date().addingTimeInterval(-7200)
         )
     ]
 
     static let alerts: [Alert] = [
         Alert(
             id: UUID(),
-            title: "Alagamento na Av. Cruz das Armas",
-            description: "Devido às fortes chuvas, há pontos de alagamento na Av. Cruz das Armas. Evite a região.",
+            title: "Alagamento na Av. Amaral Peixoto",
+            description: "Devido às fortes chuvas, há pontos de alagamento na Av. Amaral Peixoto no Centro. Evite a região.",
             severity: .high,
             category: .weather,
-            location: Location(latitude: -7.1350, longitude: -34.8890, address: "Av. Cruz das Armas"),
+            location: Location(latitude: -22.8950, longitude: -43.1230, address: "Av. Amaral Peixoto", neighborhood: "Centro", city: "Niterói"),
             createdAt: Date(),
             expiresAt: Date().addingTimeInterval(7200)
         ),
         Alert(
             id: UUID(),
-            title: "Obras na BR-230",
-            description: "Obras de recapeamento na BR-230. Trânsito lento no sentido Centro-Cabedelo.",
+            title: "Obras na Ponte Rio-Niterói",
+            description: "Obras de manutenção na Ponte Rio-Niterói. Trânsito lento no sentido Rio de Janeiro.",
             severity: .medium,
             category: .traffic,
-            location: Location(latitude: -7.0833, longitude: -34.8500, address: "BR-230"),
+            location: Location(latitude: -22.8750, longitude: -43.1500, address: "Ponte Rio-Niterói", neighborhood: "Centro", city: "Niterói"),
             createdAt: Date().addingTimeInterval(-3600),
             expiresAt: nil
         ),
         Alert(
             id: UUID(),
             title: "Campanha de Vacinação",
-            description: "Campanha de vacinação contra gripe nos postos de saúde até sexta-feira.",
+            description: "Campanha de vacinação contra gripe nos postos de saúde de Niterói até sexta-feira.",
             severity: .low,
             category: .health,
             location: nil,
@@ -159,23 +186,23 @@ enum MockData {
     static let news: [News] = [
         News(
             id: UUID(),
-            title: "Nova linha de ônibus conecta Mangabeira ao Centro",
-            summary: "A partir de segunda-feira, nova linha de transporte coletivo entra em operação.",
-            content: "A Prefeitura de João Pessoa anunciou a criação de uma nova linha de ônibus que conectará o bairro de Mangabeira ao Centro da cidade.",
+            title: "Nova ciclovia conecta Icaraí ao Centro de Niterói",
+            summary: "A partir de segunda-feira, nova ciclovia entra em operação ligando os dois bairros.",
+            content: "A Prefeitura de Niterói anunciou a inauguração de uma nova ciclovia que conectará o bairro de Icaraí ao Centro da cidade, passando pelo Campo de São Bento.",
             category: .infrastructure,
             imageURL: nil,
-            source: "Portal da Prefeitura",
+            source: "Portal da Prefeitura de Niterói",
             publishedAt: Date(),
             url: nil
         ),
         News(
             id: UUID(),
-            title: "UPA de Mangabeira amplia horário de atendimento",
+            title: "UPA do Fonseca amplia horário de atendimento",
             summary: "Unidade de Pronto Atendimento passa a funcionar 24 horas.",
-            content: "A UPA de Mangabeira agora funciona 24 horas por dia para melhor atender a população.",
+            content: "A UPA do Fonseca em Niterói agora funciona 24 horas por dia para melhor atender a população.",
             category: .health,
             imageURL: nil,
-            source: "Secretaria de Saúde",
+            source: "Secretaria de Saúde de Niterói",
             publishedAt: Date().addingTimeInterval(-86400),
             url: nil
         )
@@ -184,39 +211,39 @@ enum MockData {
     static let pointsOfInterest: [PointOfInterest] = [
         PointOfInterest(
             id: UUID(),
-            name: "Hospital de Trauma",
-            description: "Hospital de emergência e trauma da cidade.",
+            name: "Hospital Universitário Antônio Pedro",
+            description: "Hospital universitário de referência em Niterói.",
             category: .hospital,
-            location: Location(latitude: -7.1089, longitude: -34.8631, address: "Av. Orestes Lisboa"),
+            location: Location(latitude: -22.8980, longitude: -43.1200, address: "Av. Marquês do Paraná", neighborhood: "Centro", city: "Niterói"),
             imageURL: nil,
-            phone: "(83) 3216-6000",
+            phone: "(21) 2629-9000",
             website: nil,
             openingHours: "24 horas",
             rating: 4.2
         ),
         PointOfInterest(
             id: UUID(),
-            name: "Farol do Cabo Branco",
-            description: "Ponto mais oriental das Américas com vista panorâmica.",
-            category: .tourism,
-            location: Location(latitude: -7.1486, longitude: -34.7976, address: "Cabo Branco"),
+            name: "MAC Niterói",
+            description: "Museu de Arte Contemporânea, ícone arquitetônico de Oscar Niemeyer.",
+            category: .museum,
+            location: Location(latitude: -22.9064, longitude: -43.1250, address: "Mirante da Boa Viagem", neighborhood: "Boa Viagem", city: "Niterói"),
             imageURL: nil,
-            phone: nil,
+            phone: "(21) 2620-2400",
             website: nil,
-            openingHours: "08:00 - 17:00",
+            openingHours: "10:00 - 18:00",
             rating: 4.8
         ),
         PointOfInterest(
             id: UUID(),
-            name: "Estação Ciência",
-            description: "Centro de ciência e planetário.",
-            category: .museum,
-            location: Location(latitude: -7.1153, longitude: -34.8634, address: "Parque Solon de Lucena"),
+            name: "Fortaleza de Santa Cruz",
+            description: "Fortaleza histórica na entrada da Baía de Guanabara.",
+            category: .tourism,
+            location: Location(latitude: -22.9340, longitude: -43.0140, address: "Estrada General Eurico Gaspar Dutra", neighborhood: "Jurujuba", city: "Niterói"),
             imageURL: nil,
-            phone: "(83) 3214-8300",
+            phone: "(21) 2710-7840",
             website: nil,
             openingHours: "09:00 - 17:00",
-            rating: 4.5
+            rating: 4.7
         )
     ]
 
