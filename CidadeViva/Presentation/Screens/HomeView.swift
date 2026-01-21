@@ -1,5 +1,6 @@
 import SwiftUI
 import MapKit
+import Combine
 
 // MARK: - Scale Button Style
 
@@ -11,64 +12,61 @@ struct ScaleButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - Premium Nav Button
+// MARK: - Institutional Service Card (Estilo Gov.br)
 
-struct PremiumNavButton: View {
+struct InstitutionalServiceCard: View {
     let icon: String
     let title: String
     let subtitle: String?
-    let colors: [Color]
     let action: () -> Void
 
-    init(icon: String, title: String, subtitle: String? = nil, colors: [Color], action: @escaping () -> Void) {
+    init(icon: String, title: String, subtitle: String? = nil, action: @escaping () -> Void) {
         self.icon = icon
         self.title = title
         self.subtitle = subtitle
-        self.colors = colors
         self.action = action
     }
 
     var body: some View {
         Button(action: action) {
             VStack(spacing: 12) {
+                // Ícone em círculo com borda (estilo institucional)
                 ZStack {
                     Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: colors,
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 64, height: 64)
-                        .shadow(color: colors[0].opacity(0.5), radius: 12, y: 6)
+                        .stroke(AppConfiguration.primaryBlue, lineWidth: 2)
+                        .frame(width: 56, height: 56)
 
                     Image(systemName: icon)
-                        .font(.system(size: 26, weight: .semibold))
-                        .foregroundColor(.white)
+                        .font(.system(size: 24, weight: .medium))
+                        .foregroundColor(AppConfiguration.primaryBlue)
                 }
 
-                VStack(spacing: 2) {
+                VStack(spacing: 4) {
                     Text(title)
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(AppConfiguration.textPrimary)
+                        .multilineTextAlignment(.center)
 
                     if let subtitle = subtitle {
                         Text(subtitle)
-                            .font(.system(size: 11))
+                            .font(.system(size: 10))
                             .foregroundColor(AppConfiguration.textSecondary)
                     }
                 }
             }
             .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 2)
         }
         .buttonStyle(ScaleButtonStyle())
     }
 }
 
-// MARK: - Quick Stat Card
+// MARK: - Institutional Stat Card
 
-struct QuickStatCard: View {
+struct InstitutionalStatCard: View {
     let icon: String
     let value: String
     let label: String
@@ -81,7 +79,7 @@ struct QuickStatCard: View {
                 .foregroundStyle(color)
 
             Text(value)
-                .font(.system(size: 18, weight: .bold))
+                .font(.system(size: 24, weight: .bold))
                 .foregroundStyle(AppConfiguration.textPrimary)
 
             Text(label)
@@ -90,9 +88,242 @@ struct QuickStatCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
-        .background(AppConfiguration.backgroundCard)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .shadow(color: Color.black.opacity(0.04), radius: 6, x: 0, y: 2)
+    }
+}
+
+// MARK: - Institutional Header + Banner Combined
+
+struct InstitutionalHeaderBanner: View {
+    let alertCount: Int
+    let onAlertsTap: () -> Void
+    let onSearchTap: () -> Void
+
+    @State private var banners: [Banner] = []
+    @State private var currentBannerIndex = 0
+    @State private var isLoadingBanners = true
+    private let bannerTimer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            // Background: Banner do Firebase ou gradiente institucional
+            if !banners.isEmpty {
+                // Carrossel de banners com imagens
+                TabView(selection: $currentBannerIndex) {
+                    ForEach(Array(banners.enumerated()), id: \.element.id) { index, banner in
+                        BannerImageView(banner: banner)
+                            .tag(index)
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            } else {
+                // Gradiente institucional como fallback
+                LinearGradient(
+                    colors: [Color(hex: "1E3A5F"), Color(hex: "2D5A87"), Color(hex: "1E3A5F")],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+
+                // Ícone decorativo no banner
+                Image(systemName: "building.2.fill")
+                    .font(.system(size: 120))
+                    .foregroundColor(.white.opacity(0.08))
+                    .offset(x: 120, y: 180)
+            }
+
+            // Overlay gradiente para legibilidade
+            LinearGradient(
+                colors: [
+                    Color.black.opacity(0.4),
+                    Color.black.opacity(0.1),
+                    Color.black.opacity(0.3)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+
+            VStack(spacing: 0) {
+                // Safe area
+                Color.clear.frame(height: 50)
+
+                // Header
+                HStack(spacing: 12) {
+                    // Brasão/Logo
+                    Image(systemName: "building.columns.fill")
+                        .font(.system(size: 28, weight: .medium))
+                        .foregroundColor(.white)
+                        .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Cidade Viva")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.white)
+                            .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+                        Text("Prefeitura de Niterói")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundColor(.white.opacity(0.9))
+                            .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+                    }
+
+                    Spacer()
+
+                    // Ícones de ação
+                    HStack(spacing: 16) {
+                        Button(action: onSearchTap) {
+                            Image(systemName: "magnifyingglass")
+                                .font(.system(size: 18, weight: .medium))
+                                .foregroundColor(.white)
+                                .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+                        }
+
+                        Button(action: onAlertsTap) {
+                            ZStack(alignment: .topTrailing) {
+                                Image(systemName: "bell.fill")
+                                    .font(.system(size: 18, weight: .medium))
+                                    .foregroundColor(.white)
+                                    .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+
+                                if alertCount > 0 {
+                                    Circle()
+                                        .fill(Color.red)
+                                        .frame(width: 8, height: 8)
+                                        .offset(x: 4, y: -4)
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 16)
+
+                Spacer()
+
+                // Banner content (título e subtítulo)
+                VStack(alignment: .leading, spacing: 8) {
+                    if let currentBanner = banners[safe: currentBannerIndex] {
+                        Text(currentBanner.title)
+                            .font(.system(size: 26, weight: .bold))
+                            .foregroundColor(.white)
+                            .shadow(color: .black.opacity(0.4), radius: 3, y: 2)
+
+                        Text(currentBanner.subtitle)
+                            .font(.system(size: 15))
+                            .foregroundColor(.white.opacity(0.95))
+                            .shadow(color: .black.opacity(0.4), radius: 3, y: 2)
+                    } else {
+                        Text("Bem-vindo a Niterói")
+                            .font(.system(size: 26, weight: .bold))
+                            .foregroundColor(.white)
+                            .shadow(color: .black.opacity(0.4), radius: 3, y: 2)
+
+                        Text("Acesse os serviços da sua cidade")
+                            .font(.system(size: 15))
+                            .foregroundColor(.white.opacity(0.95))
+                            .shadow(color: .black.opacity(0.4), radius: 3, y: 2)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+
+                // Indicadores de página (se houver mais de um banner)
+                if banners.count > 1 {
+                    HStack(spacing: 8) {
+                        ForEach(0..<banners.count, id: \.self) { index in
+                            Capsule()
+                                .fill(index == currentBannerIndex ? Color.white : Color.white.opacity(0.5))
+                                .frame(width: index == currentBannerIndex ? 24 : 8, height: 8)
+                                .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+                        }
+                    }
+                    .padding(.bottom, 16)
+                    .animation(.spring(response: 0.3), value: currentBannerIndex)
+                }
+            }
+        }
+        .frame(height: 380)
+        .clipped()
+        .onReceive(bannerTimer) { _ in
+            guard banners.count > 1 else { return }
+            withAnimation(.easeInOut(duration: 0.5)) {
+                currentBannerIndex = (currentBannerIndex + 1) % banners.count
+            }
+        }
+        .task {
+            await loadBanners()
+        }
+    }
+
+    private func loadBanners() async {
+        do {
+            let fetchedBanners = try await FirestoreService.shared.fetchBanners()
+            print("✅ Banners carregados no Header: \(fetchedBanners.count)")
+            await MainActor.run {
+                self.banners = fetchedBanners
+                self.isLoadingBanners = false
+            }
+        } catch {
+            print("❌ Erro ao carregar banners: \(error)")
+            await MainActor.run {
+                self.isLoadingBanners = false
+            }
+        }
+    }
+}
+
+// MARK: - Banner Image View (para o carrossel)
+
+struct BannerImageView: View {
+    let banner: Banner
+
+    var body: some View {
+        ZStack {
+            // Background gradiente como fallback
+            LinearGradient(
+                colors: [Color(hex: "1E3A5F"), Color(hex: "2D5A87")],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+
+            // Imagem de fundo
+            if let imageURL = banner.imageURL {
+                AsyncImage(url: imageURL) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    case .failure:
+                        // Fallback: gradiente com ícone
+                        ZStack {
+                            LinearGradient(
+                                colors: [Color(hex: "1E3A5F"), Color(hex: "2D5A87")],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                            Image(systemName: "building.2.fill")
+                                .font(.system(size: 80))
+                                .foregroundColor(.white.opacity(0.1))
+                        }
+                    @unknown default:
+                        Color.clear
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Safe Array Subscript
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
 
@@ -109,48 +340,45 @@ struct HomeView: View {
     @State private var showEventsFullscreen = false
     @State private var showMapFullscreen = false
     @State private var showTransportFullscreen = false
+    @State private var showRoutesFullscreen = false
 
     var body: some View {
         ZStack {
-            // Background
+            // Background institucional
             AppConfiguration.backgroundPrimary
                 .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                // Header fixo
-                HeaderView(
-                    showLanguageSelector: $showLanguageSelector,
-                    alertCount: unreadAlertsCount,
-                    onAlertsTap: {
-                        showAlertsFullscreen = true
-                    }
-                )
+            // Conteúdo com scroll
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    // Header + Banner combinados (sem faixa branca)
+                    InstitutionalHeaderBanner(
+                        alertCount: unreadAlertsCount,
+                        onAlertsTap: { showAlertsFullscreen = true },
+                        onSearchTap: { /* TODO: Busca */ }
+                    )
 
-                // Conteúdo com scroll
-                ScrollView(showsIndicators: false) {
+                    // Conteúdo principal
                     VStack(spacing: 24) {
-                        // Banner Hero
-                        BannerView()
+                        // Grid de serviços institucional
+                        institutionalServicesSection
 
-                        // Botões de navegação premium
-                        navigationButtonsSection
+                        // Cards de estatísticas
+                        institutionalStatsSection
 
-                        // Widgets de resumo rápido
-                        quickStatsSection
-
-                        // Próximo evento (preview)
-                        if let nextEvent = viewModel.events.first {
-                            upcomingEventCard(event: nextEvent)
-                        }
-
-                        // Alertas recentes (resumo)
+                        // Alertas recentes (completo)
                         if !viewModel.alerts.isEmpty {
-                            recentAlertsPreview
+                            institutionalAlertsSection
                         }
 
-                        Spacer(minLength: 40)
+                        // Próximo evento
+                        if let nextEvent = viewModel.events.first {
+                            institutionalEventCard(event: nextEvent)
+                        }
+
+                        Spacer(minLength: 120)
                     }
-                    .padding(.top, 16)
+                    .padding(.top, 24)
                 }
             }
         }
@@ -193,6 +421,11 @@ struct HomeView: View {
                 onDismiss: { showTransportFullscreen = false }
             )
         }
+        .fullScreenCover(isPresented: $showRoutesFullscreen) {
+            RoutesFullScreenView(
+                onDismiss: { showRoutesFullscreen = false }
+            )
+        }
         .task {
             await viewModel.loadData()
             updateUnreadAlertsCount()
@@ -203,12 +436,12 @@ struct HomeView: View {
         }
     }
 
-    // MARK: - Navigation Buttons Section
+    // MARK: - Institutional Services Section (Grid 3x2)
 
-    private var navigationButtonsSection: some View {
+    private var institutionalServicesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Explorar")
-                .font(.system(size: 20, weight: .bold))
+            Text("Serviços")
+                .font(.system(size: 18, weight: .bold))
                 .foregroundStyle(AppConfiguration.textPrimary)
                 .padding(.horizontal, 20)
 
@@ -216,113 +449,174 @@ struct HomeView: View {
                 GridItem(.flexible()),
                 GridItem(.flexible()),
                 GridItem(.flexible())
-            ], spacing: 16) {
-                PremiumNavButton(
+            ], spacing: 12) {
+                InstitutionalServiceCard(
                     icon: "calendar",
                     title: "Eventos",
-                    subtitle: "\(viewModel.events.count) próximos",
-                    colors: [Color(hex: "FF6B95"), Color(hex: "FF8A65")]
+                    subtitle: "\(viewModel.events.count) próximos"
                 ) {
                     hapticFeedback()
                     showEventsFullscreen = true
                 }
 
-                PremiumNavButton(
-                    icon: "bell.fill",
+                InstitutionalServiceCard(
+                    icon: "exclamationmark.triangle.fill",
                     title: "Alertas",
-                    subtitle: "\(viewModel.alerts.count) ativos",
-                    colors: [AppConfiguration.error, Color(hex: "FF6B35")]
+                    subtitle: "\(viewModel.alerts.count) ativos"
                 ) {
                     hapticFeedback()
                     showAlertsFullscreen = true
                 }
 
-                PremiumNavButton(
+                InstitutionalServiceCard(
                     icon: "video.fill",
                     title: "Câmeras",
-                    subtitle: "\(viewModel.cameras.filter { $0.isOnline }.count) online",
-                    colors: [Color(hex: "8B5CF6"), AppConfiguration.primaryBlue]
+                    subtitle: "\(viewModel.cameras.filter { $0.isOnline }.count) online"
                 ) {
                     hapticFeedback()
                     showCamerasFullscreen = true
                 }
 
-                PremiumNavButton(
+                InstitutionalServiceCard(
                     icon: "map.fill",
                     title: "Mapa",
-                    subtitle: "Pontos de interesse",
-                    colors: [AppConfiguration.primaryBlue, Color(hex: "06B6D4")]
+                    subtitle: "Pontos de interesse"
                 ) {
                     hapticFeedback()
                     showMapFullscreen = true
                 }
 
-                PremiumNavButton(
+                InstitutionalServiceCard(
                     icon: "bus.fill",
                     title: "Transporte",
-                    subtitle: "Rotas e horários",
-                    colors: [AppConfiguration.success, Color(hex: "059669")]
+                    subtitle: "Rotas e horários"
                 ) {
                     hapticFeedback()
                     showTransportFullscreen = true
                 }
 
-                PremiumNavButton(
-                    icon: "ellipsis",
-                    title: "Mais",
-                    subtitle: "Em breve",
-                    colors: [Color.gray, Color.gray.opacity(0.7)]
+                InstitutionalServiceCard(
+                    icon: "arrow.triangle.turn.up.right.diamond.fill",
+                    title: "Rotas",
+                    subtitle: "Navegação GPS"
                 ) {
-                    // TODO: Menu de mais opções
+                    hapticFeedback()
+                    showRoutesFullscreen = true
                 }
             }
             .padding(.horizontal, 20)
         }
     }
 
-    // MARK: - Quick Stats Section
+    // MARK: - Institutional Stats Section
 
-    private var quickStatsSection: some View {
+    private var institutionalStatsSection: some View {
+        HStack(spacing: 12) {
+            InstitutionalStatCard(
+                icon: "video.fill",
+                value: "\(viewModel.cameras.filter { $0.isOnline }.count)",
+                label: "Câmeras",
+                color: AppConfiguration.success
+            )
+
+            InstitutionalStatCard(
+                icon: "exclamationmark.triangle.fill",
+                value: "\(viewModel.alerts.count)",
+                label: "Alertas",
+                color: AppConfiguration.warning
+            )
+
+            InstitutionalStatCard(
+                icon: "calendar",
+                value: "\(viewModel.events.count)",
+                label: "Eventos",
+                color: AppConfiguration.primaryBlue
+            )
+        }
+        .padding(.horizontal, 20)
+    }
+
+    // MARK: - Institutional Alerts Section
+
+    private var institutionalAlertsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Resumo")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundStyle(AppConfiguration.textPrimary)
-                .padding(.horizontal, 20)
+            // Header da seção
+            HStack {
+                HStack(spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(AppConfiguration.warning)
+                    Text("Alertas Recentes")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(AppConfiguration.textPrimary)
+                }
 
-            HStack(spacing: 12) {
-                QuickStatCard(
-                    icon: "video.fill",
-                    value: "\(viewModel.cameras.filter { $0.isOnline }.count)",
-                    label: "Câmeras Online",
-                    color: AppConfiguration.success
-                )
+                Spacer()
 
-                QuickStatCard(
-                    icon: "exclamationmark.triangle.fill",
-                    value: "\(viewModel.alerts.count)",
-                    label: "Alertas Ativos",
-                    color: AppConfiguration.warning
-                )
-
-                QuickStatCard(
-                    icon: "calendar",
-                    value: "\(viewModel.events.count)",
-                    label: "Eventos",
-                    color: AppConfiguration.primaryBlue
-                )
+                Button("Ver todos") {
+                    showAlertsFullscreen = true
+                }
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(AppConfiguration.primaryBlue)
             }
+            .padding(.horizontal, 20)
+
+            // Lista de alertas
+            VStack(spacing: 12) {
+                ForEach(viewModel.alerts.prefix(3)) { alert in
+                    Button {
+                        showAlertsFullscreen = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            // Indicador de severidade
+                            Circle()
+                                .fill(alert.severity.color)
+                                .frame(width: 10, height: 10)
+
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(alert.title)
+                                    .font(.system(size: 15, weight: .semibold))
+                                    .foregroundColor(AppConfiguration.textPrimary)
+                                    .lineLimit(1)
+
+                                Text(alert.description)
+                                    .font(.system(size: 13))
+                                    .foregroundColor(AppConfiguration.textSecondary)
+                                    .lineLimit(2)
+                            }
+
+                            Spacer()
+
+                            Text(alert.createdAt, style: .relative)
+                                .font(.system(size: 12))
+                                .foregroundColor(AppConfiguration.textSecondary)
+
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 12, weight: .medium))
+                                .foregroundColor(AppConfiguration.textSecondary)
+                        }
+                        .padding(16)
+                        .background(AppConfiguration.backgroundPrimary)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .buttonStyle(ScaleButtonStyle())
+                }
+            }
+            .padding(20)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
             .padding(.horizontal, 20)
         }
     }
 
-    // MARK: - Upcoming Event Card
+    // MARK: - Institutional Event Card
 
-    private func upcomingEventCard(event: Event) -> some View {
+    private func institutionalEventCard(event: Event) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Próximo Evento")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundStyle(AppConfiguration.textPrimary)
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(AppConfiguration.textPrimary)
 
                 Spacer()
 
@@ -330,7 +624,7 @@ struct HomeView: View {
                     showEventsFullscreen = true
                 }
                 .font(.system(size: 14, weight: .medium))
-                .foregroundStyle(AppConfiguration.primaryBlue)
+                .foregroundColor(AppConfiguration.primaryBlue)
             }
             .padding(.horizontal, 20)
 
@@ -338,26 +632,21 @@ struct HomeView: View {
                 showEventsFullscreen = true
             } label: {
                 HStack(spacing: 16) {
+                    // Ícone institucional
                     ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color(hex: "FF6B95"), Color(hex: "FF8A65")],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                        Circle()
+                            .stroke(AppConfiguration.primaryBlue, lineWidth: 2)
                             .frame(width: 56, height: 56)
 
                         Image(systemName: event.category.iconName)
                             .font(.system(size: 24))
-                            .foregroundStyle(.white)
+                            .foregroundColor(AppConfiguration.primaryBlue)
                     }
 
                     VStack(alignment: .leading, spacing: 4) {
                         Text(event.title)
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(AppConfiguration.textPrimary)
+                            .foregroundColor(AppConfiguration.textPrimary)
                             .lineLimit(1)
 
                         HStack(spacing: 8) {
@@ -374,12 +663,12 @@ struct HomeView: View {
                             }
                         }
                         .font(.system(size: 12))
-                        .foregroundStyle(AppConfiguration.textSecondary)
+                        .foregroundColor(AppConfiguration.textSecondary)
 
                         if event.isFree {
                             Text("Gratuito")
                                 .font(.system(size: 11, weight: .medium))
-                                .foregroundStyle(AppConfiguration.success)
+                                .foregroundColor(AppConfiguration.success)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 2)
                                 .background(AppConfiguration.success.opacity(0.15))
@@ -391,75 +680,14 @@ struct HomeView: View {
 
                     Image(systemName: "chevron.right")
                         .font(.system(size: 14, weight: .medium))
-                        .foregroundStyle(AppConfiguration.textTertiary)
+                        .foregroundColor(AppConfiguration.textSecondary)
                 }
                 .padding(16)
-                .background(AppConfiguration.backgroundCard)
+                .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
-                .shadow(color: .black.opacity(0.05), radius: 10, y: 4)
+                .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
             }
             .buttonStyle(ScaleButtonStyle())
-            .padding(.horizontal, 20)
-        }
-    }
-
-    // MARK: - Recent Alerts Preview
-
-    private var recentAlertsPreview: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("Alertas Recentes")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundStyle(AppConfiguration.textPrimary)
-
-                Spacer()
-
-                Button("Ver todos") {
-                    showAlertsFullscreen = true
-                }
-                .font(.system(size: 14, weight: .medium))
-                .foregroundStyle(AppConfiguration.primaryBlue)
-            }
-            .padding(.horizontal, 20)
-
-            VStack(spacing: 12) {
-                ForEach(viewModel.alerts.prefix(2)) { alert in
-                    Button {
-                        showAlertsFullscreen = true
-                    } label: {
-                        HStack(spacing: 12) {
-                            Image(systemName: alert.severity.iconName)
-                                .font(.system(size: 18))
-                                .foregroundStyle(alert.severity.color)
-                                .frame(width: 40, height: 40)
-                                .background(alert.severity.color.opacity(0.15))
-                                .clipShape(Circle())
-
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(alert.title)
-                                    .font(.system(size: 14, weight: .semibold))
-                                    .foregroundStyle(AppConfiguration.textPrimary)
-                                    .lineLimit(1)
-
-                                Text(alert.description)
-                                    .font(.system(size: 12))
-                                    .foregroundStyle(AppConfiguration.textSecondary)
-                                    .lineLimit(1)
-                            }
-
-                            Spacer()
-
-                            Text(alert.createdAt, style: .relative)
-                                .font(.system(size: 11))
-                                .foregroundStyle(AppConfiguration.textTertiary)
-                        }
-                        .padding(12)
-                        .background(AppConfiguration.backgroundCard)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
-                    .buttonStyle(ScaleButtonStyle())
-                }
-            }
             .padding(.horizontal, 20)
         }
     }
@@ -1593,6 +1821,821 @@ private enum TransportModeType: CaseIterable {
         case .bus: return "bus.fill"
         case .ferry: return "ferry.fill"
         case .bike: return "bicycle"
+        }
+    }
+}
+
+// MARK: - Routes Full Screen View
+
+/// Modelo para destinos de rota
+struct RouteDestination: Identifiable, Equatable {
+    let id = UUID()
+    let name: String
+    let category: RouteCategory
+    let coordinate: CLLocationCoordinate2D
+    let address: String?
+
+    static func == (lhs: RouteDestination, rhs: RouteDestination) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+/// Categorias de POIs para rotas
+enum RouteCategory: String, CaseIterable {
+    case ferry = "Barcas"
+    case hospital = "Hospitais"
+    case theater = "Teatros"
+    case beach = "Praias"
+
+    var icon: String {
+        switch self {
+        case .ferry: return "ferry.fill"
+        case .hospital: return "cross.fill"
+        case .theater: return "theatermasks.fill"
+        case .beach: return "beach.umbrella.fill"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .ferry: return AppConfiguration.primaryBlue
+        case .hospital: return AppConfiguration.error
+        case .theater: return Color(hex: "8B5CF6")
+        case .beach: return Color(hex: "06B6D4")
+        }
+    }
+}
+
+/// Modo de transporte para rota
+enum RouteTransportMode: String, CaseIterable {
+    case automobile = "Carro"
+    case walking = "A pé"
+    case transit = "Transporte"
+
+    var icon: String {
+        switch self {
+        case .automobile: return "car.fill"
+        case .walking: return "figure.walk"
+        case .transit: return "bus.fill"
+        }
+    }
+
+    var mkTransportType: MKDirectionsTransportType {
+        switch self {
+        case .automobile: return .automobile
+        case .walking: return .walking
+        case .transit: return .transit
+        }
+    }
+}
+
+/// LocationManager para obter localização real do usuário
+class RouteLocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private let manager = CLLocationManager()
+
+    @Published var userLocation: CLLocationCoordinate2D?
+    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
+
+    override init() {
+        super.init()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+
+    func requestPermission() {
+        manager.requestWhenInUseAuthorization()
+    }
+
+    func startUpdating() {
+        manager.startUpdatingLocation()
+    }
+
+    func stopUpdating() {
+        manager.stopUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        DispatchQueue.main.async {
+            self.userLocation = location.coordinate
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        DispatchQueue.main.async {
+            self.authorizationStatus = status
+            if status == .authorizedWhenInUse || status == .authorizedAlways {
+                self.startUpdating()
+            }
+        }
+    }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        DispatchQueue.main.async {
+            self.authorizationStatus = manager.authorizationStatus
+            if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
+                self.startUpdating()
+            }
+        }
+    }
+}
+
+/// UIViewRepresentable para mostrar o mapa com polyline da rota
+struct RouteMapView: UIViewRepresentable {
+    let region: MKCoordinateRegion
+    let destinations: [RouteDestination]
+    let selectedDestination: RouteDestination?
+    let routePolyline: MKPolyline?
+    let userLocation: CLLocationCoordinate2D?
+    let onDestinationTap: (RouteDestination) -> Void
+    let onRegionChange: (MKCoordinateRegion) -> Void
+
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        mapView.showsUserLocation = false // Desabilitar para não interferir
+        mapView.userTrackingMode = .none // Não seguir usuário
+        mapView.setRegion(region, animated: false)
+        return mapView
+    }
+
+    func updateUIView(_ mapView: MKMapView, context: Context) {
+        // Sempre atualizar a região para garantir que mostre Niterói
+        mapView.setRegion(region, animated: true)
+
+        // Remover anotações antigas (exceto localização do usuário)
+        let existingAnnotations = mapView.annotations.filter { !($0 is MKUserLocation) }
+        mapView.removeAnnotations(existingAnnotations)
+
+        // Adicionar anotações dos destinos
+        for destination in destinations {
+            let annotation = RouteAnnotation(destination: destination)
+            annotation.coordinate = destination.coordinate
+            annotation.title = destination.name
+            mapView.addAnnotation(annotation)
+        }
+
+        // Remover overlays antigos
+        mapView.removeOverlays(mapView.overlays)
+
+        // Adicionar polyline da rota se existir
+        if let polyline = routePolyline {
+            mapView.addOverlay(polyline)
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var parent: RouteMapView
+
+        init(_ parent: RouteMapView) {
+            self.parent = parent
+        }
+
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            // Não customizar a localização do usuário
+            if annotation is MKUserLocation {
+                return nil
+            }
+
+            guard let routeAnnotation = annotation as? RouteAnnotation else { return nil }
+
+            let identifier = "RouteDestination"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+
+            if annotationView == nil {
+                annotationView = MKMarkerAnnotationView(annotation: routeAnnotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = false
+            } else {
+                annotationView?.annotation = routeAnnotation
+            }
+
+            let category = routeAnnotation.destination.category
+            annotationView?.markerTintColor = UIColor(category.color)
+            annotationView?.glyphImage = UIImage(systemName: category.icon)
+
+            // Destaque se selecionado
+            if parent.selectedDestination?.id == routeAnnotation.destination.id {
+                annotationView?.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            } else {
+                annotationView?.transform = .identity
+            }
+
+            return annotationView
+        }
+
+        func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+            guard let routeAnnotation = annotation as? RouteAnnotation else { return }
+            parent.onDestinationTap(routeAnnotation.destination)
+            mapView.deselectAnnotation(annotation, animated: true)
+        }
+
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let polyline = overlay as? MKPolyline {
+                let renderer = MKPolylineRenderer(polyline: polyline)
+                renderer.strokeColor = UIColor(AppConfiguration.primaryBlue)
+                renderer.lineWidth = 6
+                renderer.lineCap = .round
+                renderer.lineJoin = .round
+                return renderer
+            }
+            return MKOverlayRenderer(overlay: overlay)
+        }
+
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+            // Atualizar região no parent
+        }
+    }
+}
+
+/// Anotação customizada para destinos
+class RouteAnnotation: NSObject, MKAnnotation {
+    let destination: RouteDestination
+    dynamic var coordinate: CLLocationCoordinate2D
+    var title: String?
+
+    init(destination: RouteDestination) {
+        self.destination = destination
+        self.coordinate = destination.coordinate
+        self.title = destination.name
+    }
+}
+
+/// Tela fullscreen de rotas com navegação
+struct RoutesFullScreenView: View {
+    let onDismiss: () -> Void
+
+    @StateObject private var locationManager = RouteLocationManager()
+
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: -22.8839, longitude: -43.1034),
+        span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)
+    )
+    @State private var selectedCategory: RouteCategory?
+    @State private var selectedDestination: RouteDestination?
+    @State private var selectedTransportMode: RouteTransportMode = .automobile
+    @State private var routePolyline: MKPolyline?
+    @State private var routeDistance: CLLocationDistance = 0
+    @State private var routeTime: TimeInterval = 0
+    @State private var isCalculatingRoute = false
+    @State private var hasRouteInfo = false
+
+    private let headerColors: [Color] = [Color(hex: "6366F1"), Color(hex: "8B5CF6")]
+
+    // POIs fornecidos pelo usuário
+    private let allDestinations: [RouteDestination] = [
+        // Barcas
+        RouteDestination(name: "Estação Arariboia", category: .ferry, coordinate: CLLocationCoordinate2D(latitude: -22.8939, longitude: -43.1245), address: "Centro, Niterói"),
+
+        // Hospitais
+        RouteDestination(name: "Hospital Icaraí", category: .hospital, coordinate: CLLocationCoordinate2D(latitude: -22.9023, longitude: -43.1098), address: "Icaraí, Niterói"),
+        RouteDestination(name: "UPA Centro", category: .hospital, coordinate: CLLocationCoordinate2D(latitude: -22.8912, longitude: -43.1267), address: "Centro, Niterói"),
+
+        // Teatros
+        RouteDestination(name: "Teatro Municipal", category: .theater, coordinate: CLLocationCoordinate2D(latitude: -22.8967, longitude: -43.1189), address: "Centro, Niterói"),
+        RouteDestination(name: "Teatro Popular", category: .theater, coordinate: CLLocationCoordinate2D(latitude: -22.8934, longitude: -43.1234), address: "Centro, Niterói"),
+
+        // Praias
+        RouteDestination(name: "Praia de Icaraí", category: .beach, coordinate: CLLocationCoordinate2D(latitude: -22.9042, longitude: -43.1087), address: "Icaraí, Niterói"),
+        RouteDestination(name: "Praia de São Francisco", category: .beach, coordinate: CLLocationCoordinate2D(latitude: -22.9156, longitude: -43.0934), address: "São Francisco, Niterói")
+    ]
+
+    private var filteredDestinations: [RouteDestination] {
+        if let category = selectedCategory {
+            return allDestinations.filter { $0.category == category }
+        }
+        return allDestinations
+    }
+
+    var body: some View {
+        ZStack {
+            // Mapa com rota
+            RouteMapView(
+                region: region,
+                destinations: filteredDestinations,
+                selectedDestination: selectedDestination,
+                routePolyline: routePolyline,
+                userLocation: locationManager.userLocation,
+                onDestinationTap: { destination in
+                    selectDestination(destination)
+                },
+                onRegionChange: { newRegion in
+                    // Atualizar região se necessário
+                }
+            )
+            .ignoresSafeArea()
+
+            VStack(spacing: 0) {
+                // Header
+                routesHeader
+
+                // Chips de categoria
+                categoryChips
+
+                // Lista de destinos (quando nenhum selecionado)
+                if selectedDestination == nil {
+                    destinationsList
+                }
+
+                Spacer()
+
+                // Controles do mapa
+                HStack {
+                    Spacer()
+                    VStack(spacing: 12) {
+                        routeMapControlButton(icon: "location.fill") {
+                            centerOnUserLocation()
+                        }
+                        routeMapControlButton(icon: "mappin.circle.fill") {
+                            // Centralizar nos destinos (Niterói)
+                            fitAllDestinations()
+                        }
+                        Divider().frame(width: 30)
+                        routeMapControlButton(icon: "plus") { zoomIn() }
+                        routeMapControlButton(icon: "minus") { zoomOut() }
+                    }
+                    .padding(12)
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(color: .black.opacity(0.15), radius: 10, y: 4)
+                    .padding(.trailing, 16)
+                    .padding(.bottom, selectedDestination != nil ? 320 : 20)
+                }
+
+                // Card de destino selecionado
+                if let destination = selectedDestination {
+                    routeDetailsCard(destination: destination)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
+            }
+        }
+        .onAppear {
+            // Centralizar em Niterói ao abrir
+            region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: -22.8939, longitude: -43.1145),
+                span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
+            )
+        }
+    }
+
+    // MARK: - Header
+
+    private var routesHeader: some View {
+        VStack(spacing: 0) {
+            Color.clear.frame(height: 50)
+            HStack(spacing: 16) {
+                Button(action: onDismiss) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .frame(width: 40, height: 40)
+                        .background(.white.opacity(0.2))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(ScaleButtonStyle())
+
+                HStack(spacing: 12) {
+                    Image(systemName: "arrow.triangle.turn.up.right.diamond.fill")
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundStyle(.white)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Rotas")
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundStyle(.white)
+                        Text("Navegue até seu destino")
+                            .font(.system(size: 13))
+                            .foregroundStyle(.white.opacity(0.8))
+                    }
+                }
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 16)
+        }
+        .background(LinearGradient(colors: headerColors, startPoint: .topLeading, endPoint: .bottomTrailing))
+    }
+
+    // MARK: - Category Chips
+
+    private var categoryChips: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                categoryChip(title: "Todos", icon: "square.grid.2x2", isActive: selectedCategory == nil, color: AppConfiguration.primaryBlue) {
+                    withAnimation {
+                        selectedCategory = nil
+                        selectedDestination = nil
+                        routePolyline = nil
+                    }
+                }
+
+                ForEach(RouteCategory.allCases, id: \.self) { category in
+                    categoryChip(title: category.rawValue, icon: category.icon, isActive: selectedCategory == category, color: category.color) {
+                        withAnimation {
+                            selectedCategory = selectedCategory == category ? nil : category
+                            selectedDestination = nil
+                            routePolyline = nil
+                        }
+                    }
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
+        }
+        .background(.ultraThinMaterial)
+    }
+
+    private func categoryChip(title: String, icon: String, isActive: Bool, color: Color, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 6) {
+                Image(systemName: icon).font(.system(size: 12, weight: .semibold))
+                Text(title).font(.system(size: 13, weight: .medium))
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background(Capsule().fill(isActive ? color.opacity(0.2) : Color.gray.opacity(0.1)))
+            .foregroundStyle(isActive ? color : .secondary)
+        }
+        .buttonStyle(ScaleButtonStyle())
+    }
+
+    // MARK: - Destinations List
+
+    private var destinationsList: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(filteredDestinations) { destination in
+                    Button {
+                        selectDestination(destination)
+                    } label: {
+                        HStack(spacing: 10) {
+                            Image(systemName: destination.category.icon)
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundStyle(.white)
+                                .frame(width: 36, height: 36)
+                                .background(destination.category.color)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(destination.name)
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundStyle(AppConfiguration.textPrimary)
+                                    .lineLimit(1)
+
+                                if let address = destination.address {
+                                    Text(address)
+                                        .font(.system(size: 11))
+                                        .foregroundStyle(AppConfiguration.textSecondary)
+                                        .lineLimit(1)
+                                }
+                            }
+
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundStyle(AppConfiguration.textTertiary)
+                        }
+                        .padding(10)
+                        .background(AppConfiguration.backgroundCard)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .shadow(color: .black.opacity(0.08), radius: 4, y: 2)
+                    }
+                    .buttonStyle(ScaleButtonStyle())
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
+        }
+    }
+
+    // MARK: - Route Details Card
+
+    private func routeDetailsCard(destination: RouteDestination) -> some View {
+        VStack(spacing: 0) {
+            // Seletor de modo de transporte
+            HStack(spacing: 0) {
+                ForEach(RouteTransportMode.allCases, id: \.self) { mode in
+                    Button {
+                        withAnimation(.spring(response: 0.3)) {
+                            selectedTransportMode = mode
+                            calculateRoute(to: destination)
+                        }
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image(systemName: mode.icon)
+                                .font(.system(size: 18, weight: .semibold))
+                            Text(mode.rawValue)
+                                .font(.system(size: 10, weight: .medium))
+                        }
+                        .foregroundStyle(selectedTransportMode == mode ? AppConfiguration.primaryBlue : AppConfiguration.textSecondary)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(selectedTransportMode == mode ? AppConfiguration.primaryBlue.opacity(0.1) : Color.clear)
+                    }
+                    .buttonStyle(ScaleButtonStyle())
+                }
+            }
+            .background(AppConfiguration.backgroundCard)
+
+            Divider()
+
+            // Detalhes do destino
+            VStack(spacing: 12) {
+                HStack(spacing: 14) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(destination.category.color.opacity(0.15))
+                            .frame(width: 56, height: 56)
+                        Image(systemName: destination.category.icon)
+                            .font(.system(size: 24))
+                            .foregroundStyle(destination.category.color)
+                    }
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(destination.name)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(AppConfiguration.textPrimary)
+
+                        if let address = destination.address {
+                            Label(address, systemImage: "mappin")
+                                .font(.system(size: 13))
+                                .foregroundStyle(AppConfiguration.textSecondary)
+                        }
+                    }
+
+                    Spacer()
+
+                    Button {
+                        withAnimation(.spring(response: 0.3)) {
+                            selectedDestination = nil
+                            routePolyline = nil
+                        }
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(AppConfiguration.textTertiary)
+                            .frame(width: 32, height: 32)
+                            .background(Color.gray.opacity(0.1))
+                            .clipShape(Circle())
+                    }
+                }
+
+                // Informações da rota
+                if hasRouteInfo {
+                    HStack(spacing: 20) {
+                        VStack(spacing: 2) {
+                            Text(formatDistance(routeDistance))
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundStyle(AppConfiguration.textPrimary)
+                            Text("Distância")
+                                .font(.system(size: 11))
+                                .foregroundStyle(AppConfiguration.textSecondary)
+                        }
+
+                        Divider().frame(height: 40)
+
+                        VStack(spacing: 2) {
+                            Text(formatTime(routeTime))
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundStyle(AppConfiguration.primaryBlue)
+                            Text("Tempo estimado")
+                                .font(.system(size: 11))
+                                .foregroundStyle(AppConfiguration.textSecondary)
+                        }
+
+                        Divider().frame(height: 40)
+
+                        VStack(spacing: 2) {
+                            Image(systemName: selectedTransportMode.icon)
+                                .font(.system(size: 20))
+                                .foregroundStyle(AppConfiguration.success)
+                            Text(selectedTransportMode.rawValue)
+                                .font(.system(size: 11))
+                                .foregroundStyle(AppConfiguration.textSecondary)
+                        }
+                    }
+                    .padding(.vertical, 8)
+
+                    // Indicador de rota no mapa
+                    if routePolyline != nil {
+                        HStack(spacing: 6) {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(AppConfiguration.success)
+                            Text("Rota traçada no mapa")
+                                .font(.system(size: 12, weight: .medium))
+                                .foregroundStyle(AppConfiguration.success)
+                        }
+                        .padding(.vertical, 6)
+                    }
+                } else if isCalculatingRoute {
+                    HStack(spacing: 8) {
+                        ProgressView()
+                            .scaleEffect(0.8)
+                        Text("Calculando rota...")
+                            .font(.system(size: 13))
+                            .foregroundStyle(AppConfiguration.textSecondary)
+                    }
+                    .padding(.vertical, 12)
+                }
+
+                // Botão Iniciar Navegação (abre Apple Maps)
+                Button {
+                    openInMaps(destination: destination)
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "location.fill")
+                            .font(.system(size: 16, weight: .semibold))
+                        Text("Iniciar Navegação")
+                            .font(.system(size: 15, weight: .semibold))
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(
+                        LinearGradient(
+                            colors: [AppConfiguration.success, Color(hex: "059669")],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                .buttonStyle(ScaleButtonStyle())
+            }
+            .padding(16)
+            .background(AppConfiguration.backgroundCard)
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: .black.opacity(0.15), radius: 20, y: -5)
+    }
+
+    // MARK: - Map Controls
+
+    private func routeMapControlButton(icon: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: icon)
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundStyle(.primary)
+                .frame(width: 44, height: 44)
+        }
+        .buttonStyle(ScaleButtonStyle())
+    }
+
+    // MARK: - Actions
+
+    private func selectDestination(_ destination: RouteDestination) {
+        withAnimation(.spring(response: 0.3)) {
+            selectedDestination = destination
+            region.center = destination.coordinate
+            region.span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        }
+        calculateRoute(to: destination)
+    }
+
+    private func calculateRoute(to destination: RouteDestination) {
+        isCalculatingRoute = true
+        routePolyline = nil
+        hasRouteInfo = false
+
+        // Usar sempre localização simulada em Niterói (Praça Arariboia) como origem
+        // Isso garante que as rotas funcionem mesmo com o simulador em outro país
+        let originCoordinate = CLLocationCoordinate2D(latitude: -22.8939, longitude: -43.1245)
+
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: originCoordinate))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination.coordinate))
+        request.transportType = selectedTransportMode.mkTransportType
+
+        let directions = MKDirections(request: request)
+        directions.calculate { response, error in
+            DispatchQueue.main.async {
+                isCalculatingRoute = false
+
+                if let route = response?.routes.first {
+                    routePolyline = route.polyline
+                    routeDistance = route.distance
+                    routeTime = route.expectedTravelTime
+                    hasRouteInfo = true
+
+                    // Ajustar região para mostrar toda a rota (origem + destino)
+                    let rect = route.polyline.boundingMapRect
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        region = MKCoordinateRegion(rect.insetBy(dx: -rect.width * 0.3, dy: -rect.height * 0.3))
+                    }
+                } else {
+                    // Fallback: calcular distância em linha reta
+                    let origin = CLLocation(latitude: originCoordinate.latitude, longitude: originCoordinate.longitude)
+                    let dest = CLLocation(latitude: destination.coordinate.latitude, longitude: destination.coordinate.longitude)
+                    routeDistance = origin.distance(from: dest)
+
+                    // Estimar tempo baseado no modo de transporte
+                    switch selectedTransportMode {
+                    case .automobile:
+                        routeTime = routeDistance / 8.33 // ~30 km/h em cidade
+                    case .walking:
+                        routeTime = routeDistance / 1.39 // ~5 km/h
+                    case .transit:
+                        routeTime = routeDistance / 5.56 // ~20 km/h
+                    }
+
+                    hasRouteInfo = true
+
+                    // Centralizar no destino já que não temos polyline
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        region.center = destination.coordinate
+                        region.span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                    }
+                }
+            }
+        }
+    }
+
+    private func openInMaps(destination: RouteDestination) {
+        let placemark = MKPlacemark(coordinate: destination.coordinate)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = destination.name
+
+        let launchOptions: [String: Any]
+        switch selectedTransportMode {
+        case .automobile:
+            launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        case .walking:
+            launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+        case .transit:
+            launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]
+        }
+
+        mapItem.openInMaps(launchOptions: launchOptions)
+    }
+
+    private func centerOnUserLocation() {
+        if let location = locationManager.userLocation {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                region.center = location
+                region.span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+            }
+        } else {
+            // Centralizar em Niterói
+            fitAllDestinations()
+        }
+    }
+
+    private func fitAllDestinations() {
+        guard !filteredDestinations.isEmpty else { return }
+
+        let latitudes = filteredDestinations.map { $0.coordinate.latitude }
+        let longitudes = filteredDestinations.map { $0.coordinate.longitude }
+
+        guard let minLat = latitudes.min(), let maxLat = latitudes.max(),
+              let minLon = longitudes.min(), let maxLon = longitudes.max() else { return }
+
+        let center = CLLocationCoordinate2D(
+            latitude: (minLat + maxLat) / 2,
+            longitude: (minLon + maxLon) / 2
+        )
+        let span = MKCoordinateSpan(
+            latitudeDelta: max((maxLat - minLat) * 1.5, 0.03),
+            longitudeDelta: max((maxLon - minLon) * 1.5, 0.03)
+        )
+
+        withAnimation(.easeInOut(duration: 0.5)) {
+            region = MKCoordinateRegion(center: center, span: span)
+        }
+    }
+
+    private func zoomIn() {
+        withAnimation(.easeInOut(duration: 0.3)) {
+            region.span.latitudeDelta = max(region.span.latitudeDelta / 2, 0.005)
+            region.span.longitudeDelta = max(region.span.longitudeDelta / 2, 0.005)
+        }
+    }
+
+    private func zoomOut() {
+        withAnimation(.easeInOut(duration: 0.3)) {
+            region.span.latitudeDelta = min(region.span.latitudeDelta * 2, 1.0)
+            region.span.longitudeDelta = min(region.span.longitudeDelta * 2, 1.0)
+        }
+    }
+
+    // MARK: - Formatters
+
+    private func formatDistance(_ meters: CLLocationDistance) -> String {
+        if meters >= 1000 {
+            return String(format: "%.1f km", meters / 1000)
+        } else {
+            return String(format: "%.0f m", meters)
+        }
+    }
+
+    private func formatTime(_ seconds: TimeInterval) -> String {
+        let minutes = Int(seconds / 60)
+        if minutes >= 60 {
+            let hours = minutes / 60
+            let mins = minutes % 60
+            return "\(hours)h \(mins)min"
+        } else {
+            return "\(minutes) min"
         }
     }
 }

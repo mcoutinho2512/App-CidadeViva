@@ -21,14 +21,20 @@ final class FirestoreService {
     // MARK: - Fetch Alertas
 
     func fetchAlerts() async throws -> [Alert] {
+        // Busca todos os alertas e filtra/ordena localmente para evitar necessidade de índice composto
         let snapshot = try await db.collection(Collection.alertas.rawValue)
-            .whereField("ativo", isEqualTo: true)
-            .order(by: "criadoEm", descending: true)
             .getDocuments()
 
-        return snapshot.documents.compactMap { document in
-            Self.mapDocumentToAlert(document)
-        }
+        return snapshot.documents
+            .compactMap { document -> Alert? in
+                guard let data = document.data() as? [String: Any] else { return nil }
+
+                let ativo = data["ativo"] as? Bool ?? false
+                guard ativo else { return nil }
+
+                return Self.mapDocumentToAlert(document)
+            }
+            .sorted { $0.createdAt > $1.createdAt }
     }
 
     // MARK: - Fetch Eventos
@@ -85,6 +91,12 @@ final class FirestoreService {
 
     // MARK: - Mapeamento Firestore → Domain Models
 
+    // MARK: - Constantes de Localização Padrão (Niterói, RJ)
+
+    private static let defaultLatitude = -22.8839
+    private static let defaultLongitude = -43.1034
+    private static let defaultCity = "Niterói"
+
     private static func mapDocumentToAlert(_ document: DocumentSnapshot) -> Alert? {
         guard let data = document.data() else { return nil }
 
@@ -96,46 +108,47 @@ final class FirestoreService {
         let criadoEm = (data["criadoEm"] as? Timestamp)?.dateValue() ?? Date()
         let expiraEm = (data["expiraEm"] as? Timestamp)?.dateValue()
 
-        // Mapear coordenadas
+        // Mapear coordenadas (trata NaN como inválido)
         var location: Location? = nil
         if let coords = data["coordenadas"] as? [String: Any],
            let lat = coords["latitude"] as? Double,
-           let lon = coords["longitude"] as? Double {
+           let lon = coords["longitude"] as? Double,
+           !lat.isNaN && !lon.isNaN {
             location = Location(
                 latitude: lat,
                 longitude: lon,
                 address: localizacao,
-                city: "João Pessoa"
+                city: defaultCity
             )
         } else if !localizacao.isEmpty {
-            // Se não tem coordenadas, cria location apenas com endereço
+            // Se não tem coordenadas válidas, usa localização padrão com endereço
             location = Location(
-                latitude: -7.1195,
-                longitude: -34.8450,
+                latitude: defaultLatitude,
+                longitude: defaultLongitude,
                 address: localizacao,
-                city: "João Pessoa"
+                city: defaultCity
             )
         }
 
-        // Mapear severidade
+        // Mapear severidade (aceita português e inglês)
         let severity: Alert.Severity
-        switch severidadeRaw {
-        case "low": severity = .low
-        case "medium": severity = .medium
-        case "high": severity = .high
-        case "critical": severity = .critical
+        switch severidadeRaw.lowercased() {
+        case "low", "baixa", "baixo": severity = .low
+        case "medium", "media", "medio", "média", "médio": severity = .medium
+        case "high", "alta", "alto": severity = .high
+        case "critical", "critica", "critico", "crítica", "crítico": severity = .critical
         default: severity = .low
         }
 
-        // Mapear categoria/tipo
+        // Mapear categoria/tipo (aceita português e inglês)
         let category: Alert.Category
-        switch tipoRaw {
-        case "traffic": category = .traffic
-        case "weather": category = .weather
-        case "security": category = .security
-        case "health": category = .health
-        case "infrastructure": category = .infrastructure
-        case "event": category = .event
+        switch tipoRaw.lowercased() {
+        case "traffic", "transito", "trânsito": category = .traffic
+        case "weather", "clima", "tempo": category = .weather
+        case "security", "seguranca", "segurança": category = .security
+        case "health", "saude", "saúde": category = .health
+        case "infrastructure", "infraestrutura": category = .infrastructure
+        case "event", "evento": category = .event
         default: category = .infrastructure
         }
 
@@ -166,8 +179,8 @@ final class FirestoreService {
         let preco = data["preco"] as? Double
 
         // Mapear coordenadas
-        var latitude = -7.1195
-        var longitude = -34.8450
+        var latitude = defaultLatitude
+        var longitude = defaultLongitude
         if let coords = data["coordenadas"] as? [String: Any] {
             latitude = coords["latitude"] as? Double ?? latitude
             longitude = coords["longitude"] as? Double ?? longitude
@@ -177,7 +190,7 @@ final class FirestoreService {
             latitude: latitude,
             longitude: longitude,
             address: local,
-            city: "João Pessoa"
+            city: defaultCity
         )
 
         // Mapear categoria
@@ -225,8 +238,8 @@ final class FirestoreService {
         let atualizadoEm = (data["atualizadoEm"] as? Timestamp)?.dateValue() ?? Date()
 
         // Mapear coordenadas
-        var latitude = -7.1195
-        var longitude = -34.8450
+        var latitude = defaultLatitude
+        var longitude = defaultLongitude
         if let coords = data["coordenadas"] as? [String: Any] {
             latitude = coords["latitude"] as? Double ?? latitude
             longitude = coords["longitude"] as? Double ?? longitude
@@ -236,7 +249,7 @@ final class FirestoreService {
             latitude: latitude,
             longitude: longitude,
             neighborhood: regiao,
-            city: "João Pessoa"
+            city: defaultCity
         )
 
         // Mapear status

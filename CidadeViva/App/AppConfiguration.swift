@@ -3,54 +3,62 @@ import SwiftUI
 enum AppConfiguration {
     static let appName = "Cidade Viva"
 
-    // MARK: - Nova Paleta de Cores
+    // MARK: - Paleta Institucional/Governamental
 
-    // Cores Primárias
-    static let primaryOrange = Color(hex: "FFA94D")  // Dourado suave
-    static let primaryBlue = Color(hex: "4F46E5")    // Azul vibrante
+    // Cores Primárias - Tons sóbrios e profissionais
+    static let primaryBlue = Color(hex: "1E3A5F")       // Azul marinho institucional
+    static let secondaryBlue = Color(hex: "2D5A87")     // Azul médio
+    static let accentGold = Color(hex: "C9A227")        // Dourado institucional (detalhes)
+    static let primaryOrange = accentGold               // Compatibilidade
 
     // Backgrounds
-    static let backgroundPrimary = Color(hex: "F8FAFC")   // Off-white
+    static let backgroundPrimary = Color(hex: "F5F7FA") // Cinza muito claro
     static let backgroundCard = Color.white
-    static let backgroundDark = Color(hex: "1E293B")      // Header dark
+    static let backgroundDark = Color(hex: "1A1A2E")    // Modo escuro
 
     // Textos
-    static let textPrimary = Color(hex: "1E293B")
-    static let textSecondary = Color(hex: "64748B")
-    static let textTertiary = Color(hex: "94A3B8")
+    static let textPrimary = Color(hex: "2C3E50")       // Texto principal
+    static let textSecondary = Color(hex: "6B7C93")     // Texto secundário
+    static let textTertiary = Color(hex: "94A3B8")      // Texto terciário
 
     // Status
-    static let success = Color(hex: "10B981")
-    static let warning = Color(hex: "F59E0B")
-    static let error = Color(hex: "EF4444")
+    static let success = Color(hex: "27AE60")           // Verde status
+    static let warning = Color(hex: "F39C12")           // Amarelo alerta
+    static let error = Color(hex: "E74C3C")             // Vermelho crítico
 
-    // Gradientes
+    // Gradientes Institucionais
+    static let gradientHeader = LinearGradient(
+        colors: [Color(hex: "1E3A5F"), Color(hex: "2D5A87")],
+        startPoint: .leading,
+        endPoint: .trailing
+    )
+
     static let gradientSunset = LinearGradient(
-        colors: [Color(hex: "FFA94D"), Color(hex: "FF6B95")],
+        colors: [Color(hex: "1E3A5F"), Color(hex: "2D5A87")],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
 
     static let gradientOcean = LinearGradient(
-        colors: [Color(hex: "4F46E5"), Color(hex: "06B6D4")],
+        colors: [Color(hex: "1E3A5F"), Color(hex: "2D5A87")],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
 
     static let gradientSuccess = LinearGradient(
-        colors: [Color(hex: "10B981"), Color(hex: "059669")],
+        colors: [Color(hex: "27AE60"), Color(hex: "1E8449")],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
 
     // Tab Bar
-    static let tabBarBackground = Color(hex: "FFFBF5")  // Creme suave
-    static let tabBarSelected = Color(hex: "FFA94D")
+    static let tabBarBackground = Color.white
+    static let tabBarSelected = Color(hex: "1E3A5F")
     static let tabBarUnselected = Color(hex: "94A3B8")
 
     // Legado (manter compatibilidade)
-    static let primaryYellow = primaryOrange
-    static let headerDark = backgroundDark
+    static let primaryYellow = accentGold
+    static let headerDark = primaryBlue
     static let cardBackground = backgroundCard
 
     // API
