@@ -38,10 +38,9 @@ export default function Modal({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
+      {/* Backdrop - não fecha ao clicar para evitar perda de dados */}
       <div
         className="fixed inset-0 bg-black/50 transition-opacity"
-        onClick={onClose}
       />
 
       {/* Modal */}
